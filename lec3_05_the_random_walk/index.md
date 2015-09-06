@@ -43,14 +43,14 @@ has crossed level $a$ at some point, and is now at a height $x$, below
 $a$.  Find the point where the graph first reaches level $a$, and
 reflect the prior portion about the line $G=a$.  The origin is always
 mapped up to a height $2a$, so every such graph can be transformed
-into a unique graph that {\sl starts\/} at $2a$ and drops after $n$
+into a unique graph that _starts_ at $2a$ and drops after $n$
 steps to a
 height $x$.  Since all of graphs that do that must cross $a$ at some
 intermediate time, we have a one-to-one correspondence between the two
 types of graphs.  Thus, the probability of reaching $a$ but coming
 back down to $x$ is the same as the probability of starting at the
-origin and dropping to a height of $2a-x$.  This is called {\sl the
-reflection principle}.
+origin and dropping to a height of $2a-x$.  This is called _the
+reflection principle_.
 
 $$P((G_n=x)\cap(Z_a\le n)) = P(G_n=2a-x) = P(G_n=x-2a).$$
 
