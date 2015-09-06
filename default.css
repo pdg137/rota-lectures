@@ -3,6 +3,10 @@ body {
   line-height: 2em;
 }
 
+p {
+  text-align: justify;
+}
+
 ol.breadcrumb li:after {
   content: " >";
 }
