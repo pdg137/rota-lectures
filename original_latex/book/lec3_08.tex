@@ -1,0 +1,115 @@
+{\Large 18.313 Lecture 13, Monday, March 8, 1999}\\
+{\large Lecture by Prof. Gian Carlo Rota}\\
+Transcribed by Winston D. Chang (wdchang@mit.edu) and Daniel P. Riordan (riordan@mit.edu)\\
+
+{\bf Bayes's Law}
+
+Preliminary discussion: Combinatorial Identity
+$\sum_{j=0}^{n}$ ${j}\choose{i}$${n-j}\choose{k-i}$ = ${n+1}\choose{k+1}$
+\underline{example:}
+\begin{itemize}
+\item for i=0: $\sum_{j}$ ${n-j}\choose{k}$ = ${n+1}\choose{k+1}$
+\item for i=1: $\sum_{j}$  j ${n-j}\choose{k-1}$ = ${n+1}\choose{k+1}$
+\item etc.
+\end{itemize}
+
+In order to derive Bayes's Law we define a new sample space.
+
+New Sample Space: $ \Omega _{FD} $ = Fermi-Dirac statistics.\\
+\{1, 2, \ldots , n+1\} Sample points $\omega$ are all subsets with exactly
+k+1 elements.
+
+The probability of each sample point $\omega$ is given by:
+$P(\omega)=\frac{1}{{{n+1}\choose{k+1}}}$
+
+The probability of an event A is given by:
+$P(A)=\sum_{\omega \epsilon A}P(\omega)$
+
+We have now defined the probability of each event in $\Omega_{FD}$. `So
+what?' you say. Watch!
+
+$C_{i+1}$ = random variable on $\Omega _{FD}$
+$C_{i+1}$ = (i+1)-th element in a sample point
+$C_{i+1}(\omega)$
+
+What is the probability distribution?  Well, if we consider the number j+1 to be fixed at the (i+1)-th position, we get :
+$P(C_{i+1}=j+1)=\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n+1}\choose{k
++1}}}$
+$\sum_{j}P(C_{i+1}=j+1)=1,$ hence
+$\sum_{j}\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n+1}\choose{k+1}}}$=1
+
+Therefore, by multiplying both sides by ${n+1}\choose{k+1}$ we get the Combinatorial Identity:
+$\sum_{j=0}^{n}$ ${j}\choose{i}$${n-j}\choose{k-i}$ = ${n+1}\choose{k+1}$
+
+Law of Alternatives: 
+$P(A)=\sum_{w \epsilon A}P(A|B)P(B)$
+$P(A|B)=\frac{{P(A\cap B)}}{P(B)}$
+
+$P(B|A)=\frac{{P(B\cap A)}}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{P(A|B)P(B)}{{\sum_{B \epsilon \Pi}P(A|B)P(B)}}$
+
+Terminology:
+$P(B)$ is called the ``Prior.''  Let's be even more British, and note that $P(B|A)$ is called the ``Posterior'' and $P(A|B)$ is called the ``Likelihood.''
+
+As you learned in elementary school, $x\alpha y$ means ``x = cy for some nonzero constant c.''  Bayes's Law tells us that: $P(B|A)\alpha P(A|B)P(B)$
+
+Now what's missing is the meaning. Let's take the most typical example to illustrate what this means.
+
+Here is an example of the problem of Scientific Induction
+
+There is an urn with n balls, some red and some black. The number of balls n, is known, while the number of red and black balls are not known.
+
+Let U=the number of red balls in the urn.  A sample of k balls is taken out of the urn without replacement.  Let A = the number of reds in the sample of k balls.  Then,
+
+$P(A=i|U=j)=\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n}\choose{k}}}$
+(this is the hypergeometric distribution)
+
+We want to find: $P(U=j|A=i)$.
+
+$P(U=j|A=i)=\frac{P(A=i|U=j)P(U=j)}{P({{\sum_{j}P(A=i|U=j)P(U=j)}})}=\frac{
+P(A=i|U=j)P(U=j)}{P(A=i)}$
+
+for this,
+\begin{itemize}
+\item $P(U=j|A=i)$ is the posterior
+\item $P(A=i|U=j)$ is the likelihood
+\item $P(U=j)$ is the prior
+\end{itemize}
+
+There are 2 main initial guesses that can be made:
+
+\underline{Case 1:}  Uniform Prior:
+
+If we assume that the probability of every sample point $\omega$ is the
+same(a reasonable assumption), we have $P(U=j)=\frac{1}{n+1}$ for all j.
+
+Assuming a uniform prior we find:
+
+$P(U=j|A=j)=\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n}\choose{k}}}*\frac{{\frac{1}{n+1}}}{{\sum_{j}\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n}\choose{k}}}*\frac{1}{n+1}}}=\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{\sum_{j}{{j}\choose{i}}{{n-j}\choose{k-i}}}}=\frac{{{{j}\choose{i}}{{n-j}\choose{k-i}}}}{{{n+1}\choose{k+1}}}$
+
+\underline{Case 2:} Conjugate Prior
+
+Suppose that the balls in the urn are initially uncolored, and that the
+devil independently colors each ball red with probability p and black with
+probability q (another reasonable assumption). The color of each ball can be
+represented by the random variable X, which takes on the values 1 (when the
+ball is red) and 0 (when the ball is black). Let $X_i$ represent the $i^{th}$ ball.
+
+The total number of red balls equals $X_1 + X_2 + \ldots + X_n = S_n$.
+\begin{eqnarray*}
+P(A=i|U=j) &=& \frac{{{j}\choose{i}}{{n-j}\choose{k-i}}}{{{n}\choose{k}}}\\
+P(U=j) &=& P(S_n=j) = {{n}\choose{j}}p^{j}q^{n-j}\\
+P(A=i) &=& P(X_1+X_2+\ldots+X_k=i) = {{k}\choose{i}}p^{i}q^{k-i}\\
+P(U=j|A=i) &=& \frac{P(A=i|U=j)P(U=j)}{P(A=i)}\\
+&=& \frac{{{j}\choose{i}}{{n-j}\choose{k-i}}{{n}\choose{j}}p^{j}q^{n-j}}{{{n}\choose{k}}{{k}\choose{i}}}p^{i}q^{k-i}\\
+&=& \frac{\frac{j!}{i!(j-i)!}\frac{(n-j)!}{(k-i)!(n-j-k+i)!}\frac{n!}{j!(n-j)!}} {\frac{n!}{k!(n-k)!} \frac{k!}{i!(k-i)!}} p^{j-i}q^{n-j-k+i}\\
+\end{eqnarray*}
+
+Massive cancellation yields:
+$P(U=j|A=i) = \frac{(n-k)!}{(n-k-j+i)!(j-i)!}p^{j-i}q^{n-j-k+i}$
+
+And finally,
+$P(U=j|A=i) = {{n-k}\choose{j-i}}p^{j-i}q^{n-j-k+i}$
+
+This simple result suggests that the extensive calculations we just performed were probably unnecessary.
+
+

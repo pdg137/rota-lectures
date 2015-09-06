@@ -1,0 +1,81 @@
+{\Large 18.313 Lecture 15, Friday, March 12, 1999}\\
+{\large Lecture by Prof. Gian-Carlo Rota}\\
+Transcribed by Carla M. Pellicano (carpel@mit.edu)\\
+
+{\bf Continuous Random Variables}:
+
+Random Variables:
+General History:  What is a random variable?  Given a sample space omega, a random variable is a function $X:\Omega$, where $X(\omega)$ represent real numbers.  For every pair of real numbers $a$ and $b$, where $a \leq b$, 
+
+$(a\leq X\leq b)=\lbrace{\omega \in \Omega:a < X(\omega) \leq b \rbrace}$
+
+In an event, observe: $(a<X\leq b) = (X\leq b) - (X\leq a)$.  In the cumulative distribution of a random variable, $X$ gives the statistical behavior of that random variable, and is given by
+
+$F_x(t) = F(t)=P(x\leq t)$
+
+For example, $P(a<X\leq b)=F_x(b)-F_x(a)$.
+
+\underline{example 1}:\\
+$X$ is an integer random variable when $F_x(t) = \displaystyle\sum_{n\leq t} P(X=n)$
+
+\underline{example 2}:\\
+given interval $[0,a]$, $0\leq X\leq a$, $P(c<X\leq d)=\frac{d-c}{a}$
+
+In this case, events are the intervals, and $P([c,d])=\frac{d-c}{a}$.  In picking a point at random, the cummulative distribution is given by,
+
+$F_x(t) = \left\{ \begin{array} {lll} 0 &\mbox{if $t<0$}\\\frac{t}{a} &\mbox{if $0\leq t\leq a$}\\1 & \mbox{if $t>a$}\end{array} \right.$
+
+where $P(c<x\leq d)=F_x(d)-F_x(c)$.  If we list all of the rational numbers in the interval $[0,a]$, $\lbrace{r_1, r_2, r_3, ...\rbrace}$ for $a=1$, $\lbrace{1, 1, \frac{1}{2}, \frac{1}{3},...\rbrace}$, the probability of any single number is zero.  By {\em Countable Additivity}, we know that the probability of the set of all rational numbers, $P(\lbrace{r_1, r_2, r_3,...\rbrace})=\sum_n P(r_n)=0$.  However, $P([0,1]) = 1$.  This is the most simplest that irrational numbers exist.
+
+\underline{Cummulative Distribution}
+
+What are the properties of {\em cummulative distribution}?  If $t_1<t_2$, then $F_x(t_1)\leq F_x(t_2)$.  This is true, since $(x\leq t_1)\leq (x\leq t_2)$.  Further, $\displaystyle \lim_{t\to \infty} F_x(t)=1$, because the limit is simply the probability that $X$ takes any value whatsoever.  $P(-\infty <X< \infty)=P(\Omega)=1$.  $X$ is continuous when $P(X=t)=0$ for all real numbers $t$.  This is the same as saying that the {\em cummulative distribution}, $F_x(t)$, is a continuous function.  For example, for an integer random variable, the {\em cummulative distribution} is not continuous.  It jumps at every integer.  We can also look at density and probability density.  $X$ has a density, dens$(X=s) = F(s)$ when,
+
+$F_X(t)=\int_{-\infty}^{t}\!\!\!\!\! f(s)\,ds= \int_{-\infty}^{t}\!\!\!\!\! \mbox{dens}\,(\!X\!=\!s)\,ds$
+
+\underline{example}: \\
+Select a point $X$ at random on $[0,a]$
+
+$dens(X=s)=\left\{ \begin{array} {ll} \frac{1}{a} &\mbox{if $0 \leq s \leq a$} \\ 0 &\mbox{elsewhere}\end{array} \right.$
+$P(c < X\leq d)=\displaystyle\int_c^d \!\frac{1}{a}\, ds=\frac{d-c}{a}$.
+
+A density has the following property, $f(t)=\frac{d}{dt}F_x(t)$.  Since $F_x(t)$ is an increasing function, it follows that $f(t)\geq 0$.  Further, since $\displaystyle\lim_{t \to \infty} F_x(t)=1$, it follows that $\displaystyle\int_{-\infty}^{\infty}\!\!\!f(s)ds=1$.
+
+Suppose that we have two random variables, $X$ and $Y$.  Their statistical behavior is completely determined when we take $P((a<X\leq b)\cap(c<Y\leq d))$, and this is determined by the joint {\em cummulative distribution}.
+
+$P((X\leq t)\cap(Y\leq s))=F(s,t)$
+
+Easy computation shows that:
+
+\begin{eqnarray*}
+P((a<X\leq b)\cap(c<Y\leq d))=P((X\leq b)\cap(Y\leq c))+P((X\leq b)\cap(Y\leq d)) \\
+-P((X\leq a)\cap(Y\leq c))-P((X\leq a)\cap(Y\leq d)) \\
+\mbox{$X$ and $Y$ are independent when for all $a,b,c,d$,} \\
+P((a<X\leq b)\cap (c<Y\leq d))=P(a<X\leq b)P(c<Y\leq d)
+\end{eqnarray*}
+
+When can we say that $X$ and $Y$ are identically distributed?  When for all $a, b$, 
+$P(a<x\leq b)=P(a<Y\leq b)$
+
+which is the same as saying $F_x(t)=F_y(t)$.  
+
+{$X, Y, Z$ random variables are exchangeable when 
+$P((a<X\leq b)\cap(c<Y\leq d)\cap(e<Z\leq f))=P((a<Y\leq b)\cap(c<X\leq d)\cap(e<Z\leq f))$ for all permutations of $X,Y,Z$.}
+
+\underline{example}:  Dirischlet (uniform) Process
+
+The Dirischlet Process is another stochastic process, or sequence of random variables.  Given a continuous set of boxes, we choose $n$ points independently and at random (let's say on an interval $[0,a]$).  We have $n$ independent and identically distributed random variables $X_1, X_2, X_n$, each one with a density given by,
+$dens(X_i)= \left\{ \begin{array} {ll} \frac{1}{a} & 0<t\leq a\\0 & elsewhere\end{array} \right. $
+
+We defined our sample space implicitly.  These $n$ points measure joint densities of the gaps.  This is not such an easy task.
+
+Let's now define a new random variable.  $X_{(1)}$ is the minimum of $\lbrace{X_1, X_2,...X_n\rbrace}$.  What is the $P(X_{(1)} \leq t)$ for $0<t\leq a)$?.  We know, since $X_{(1)},X_{(2)},...$ are independent and identically distributed, and therefore exchangeable, that
+\begin{eqnarray*}
+(X_{(1)}\leq t) &=& (X_{(1)}>t)\cap...\cap(X_{(n)}>t) \\
+1-P(X_{(1)}\leq t) &=& \frac{(a-t)^n}{a^n} \\
+P(X_{(1)}\leq t) &=& 1-\frac{(a-t)^n}{a^n} \\
+\mbox{and the density is given by,} \\
+dens(X_{(1)}=t) &=& \frac{d}{dt}P(X_{(1)}\leq t)=\underbrace{\frac{n(a-t)^{n-1}}{a^n}}_{\mbox{integrates to 1}}
+\end{eqnarray*}
+We see, that larger $n$ yields more density concentrated near zero.
+

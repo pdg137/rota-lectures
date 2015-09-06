@@ -1,0 +1,49 @@
+{\Large 18.313, Lecture 24, Wednesday, April 14, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\\
+Transcribed by Carla M. Pellicano (carpem@mit.edu)\\
+
+\noindent {\bf The Algebra of Probability Distribution} (continued):\\
+
+\noindent Last lecture, we derived an expression for the density of an increasing function $g(X)$,
+$$dens(g(X)=t)=dens(X=g^{-1}(t))\cdot\frac{1}{g\prime(g^{-1}(t))}$$
+Now we want to compute the expectation of this function.  Expectation, by basic definition, is given by
+$$E(g(X))=\int u\,dens(g(X)=u)du$$
+By substituting in the previous expression, we obtain
+$$E(g(X))=\int u\,dens(X=g^{-1}(u))\frac{1}{g\prime(g^{-1}(u))}du$$
+Next, we make a change of variables.  Set $s=g^{-1}(u)$, so that $g(s)=u$.  Our integral becomes $\int g(s)\,dens(X=s)ds$.  Finally, we put in limits, allowing $s$ to go from zero to infinity.
+$$E(g(X))=\int_0^{\infty} g(s)dens(X=s)ds$$
+
+\noindent\underline{Example}:  We want to calculate the expectation of the random variable $X$ plus some constant $c$.  Let's use the formula.  
+$$\int(c+s)dens(X=s)ds=c\underbrace{\int\! dens(X=s)ds}_{\mbox{integrates to 1}}+\underbrace{\int\! s\,dens(X=s)ds}_{\mbox{expectation of $s$}}$$
+Therefore, $E(X+c)=E(X)+c$.\\\\
+
+Suppose $X,Y$ are random variables having a joint density, $dens(X=s,Y=t)$.  Then the discussion of the preceeding three weeks can be summarized as follows.
+$$\int\int_A\!\! dens(X=s,Y=t)dsdt\to\;\mbox{probability that $X$ and $Y$ lie in $A$}$$
+In particular, 
+$$P(X+Y\leq u)=\int\int_A\!dens(X\!=\!s,Y\!=\!t)ds\,dt$$ 
+where $A$ is a set in which $X+Y\leq u$.  A set where $s+t\leq u$ is the area to left of the line $s+t=u$.  The area, $A$, can be worked out by taking limits.
+$$\int_{t=-\infty}^u\!\int_{s=-\infty}^{\infty}\!\!\!dens(X=s,Y=t-s)dt\,ds=P(X+Y\leq u)$$
+Since the density of $X$ and $Y$, is the derivative of this with respect to $u$, we get the following expression.
+$$dens(X+Y=u)=\int_{-\infty}^{\infty}\!\!\!dens(X=s,Y=u-s)ds$$
+\noindent\underline{special case}:  If $X$ and $Y$ are independent random variables, then their joint density is simply equal to the the product of their densities.
+$$dens(X=s,Y=t)=\underbrace{dens(X=s)}_{f(s)}\underbrace{dens(Y=t)}_{g(t)}$$ 
+It follows that the density of their sum,
+$$dens(X+Y=u)=\int_{\-infty}^{\infty}f(s)g(u-s)ds$$
+This is the expression for convolution!  Convolution is simply the density of the sum of two random variables.  In particular, if $X\geq 0$ and $Y\geq 1$, this expression reduces to the more common form
+$$dens(X+Y=u)=\int_0^{\infty}\!\!f(s)g(u-s)ds$$
+\noindent\underline{Example}  Let $X$ and $Y$ be independent and uniform in $[0,a]$.  What is $X+Y$?\\\\
+\noindent(small digression) indicator random variables\\\\
+Given a sample space, $\Omega$ and an even $A$, we develop indicator random variables, $I_A$.
+$$I_A=\left\{ \begin{array}{ll}1&\mbox{if A happens}\\0&\mbox{if A does not happen}\end{array}\right.\;\;\mbox{i.e.}\;\;I_A(\omega)=\left\{\begin{array}{ll}1&\mbox{if $\omega\in A$}\\0&\mbox{if $\omega\notin A$}\end{array}\right.$$
+To think probabilistically, we never mention sample points.  We do everything in terms of events.  In quantum physics, there are no sample points.  There are only events.\\\\
+Indicator random variables are discontinuous.  The cumulative distribution jumbs from zero to one.  Unfortunately, this tells us nothing, but the expectation value does.  
+$$E(I_A)=P(I_A)$$  
+Using indicator random variables, we can replace probabilities of random variables with expectations.  
+$$I_A\cdot I_B=I_{A\cap B},\;\;I_{A^c}=1-I_A$$
+$$I_{A\cup B}=1-I_{{A\cup B}^c}=1-I_{A^c\cap B^c}=1-I_{A^c}\cdot I_{B^c}$$
+$$I_{A\cup B}=1-(1-I_A)(1-I_B)=I_A+I_B-I_AI_B$$
+$$I_{A_1\cup A_2\cup...\cup A_n}=1-(1-I_{A_1})(1-I_{A_2})...(1-I_{A_n})$$
+Taking the expectation of both sides of this last expression, we get the inclusion-exclustion principle.
+$$P(A_1\cup A_2\cup...\cup A_n)=E(\displaystyle\sum_i I_{A_i})-E(\displaystyle\sum_{i<j} I_{A_i}I_{A_j})+...$$
+$$=\displaystyle\sum_i P(A_i)-\displaystyle\sum_{i<j}P(A_i\cap A_j)+\displaystyle\sum_{i<j<k}P(A_i\cap A_j\cap A_k)-...$$
+This is the simplest proof of the inclusion-exclusion principle.  (end digression)

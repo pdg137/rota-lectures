@@ -1,0 +1,134 @@
+{\Large 18.313 Lecture 14, Wednesday, March 10, 1999}\\
+{\large Lecture by Prof. Gian Carlo Rota}\\
+Transcribed by Luis A. Benitez (luisb@mit.edu)\\
+
+{\bf Baye's Law} (continued):
+
+Suppose we have an {\em urn} with $n$ balls and $j$ balls are red.  The other $n-j$ balls are black. From that urn we take a sample of $k$ balls. Let us define the following event:
+\begin{itemize}
+\item A = number of red balls in the sample $k$.
+\end{itemize}
+
+By combinatorial probability we can write:
+\begin{displaymath}
+P(A=i)=\frac{{{j}\choose{i}}{{n-j}\choose{k-i}}}{{{n}\choose{k}}}
+\end{displaymath}
+
+This is called the {\em Hypergeometric distribution}.  In real life this doesn't happen since we don't know $j$.  So, how do we set up a sample space?  We use the {\em Law of Alternatives}.
+
+If we don't know the number or red balls in the urn, but we know both $n$ \& $k$, then the only way to define a sample space is by the Law of Alternatives.
+
+\begin{displaymath}
+P(A=i) = \sum_{j=0}^{n} P(A \mid U = j) P(U = j)
+\end{displaymath}
+
+The first term of the sumation is called the {\em likelihood}.  The second term is called the {\em prior}.  The prior requires an arbitrary assignment. Guess work is necessary here.  This guess is what is called the prior.  Having chosen a prior we have a sample space, hence
+
+\begin{eqnarray*}
+P(U=j \mid A=i) &=& \frac {P(U=j) \cap P(A=i)}  {P(A=i)}\\
+		&=& \frac {P(A=i \mid U=j) P(U = j)} {P(A=i)}
+\end{eqnarray*}
+
+The denominator is the {\em normalization coefficient}.  And we have defined
+this earlier so we substitute in and get,
+$\frac {P(A=i \mid U=j) P(U=j)} {\sum_{j=0}^{n} P(A=i \mid U=j)P(U=j)}$
+
+This way we can display the prior and the likelihood both in the denominator and in the numerator.  We can take this and divide it into two cases:
+
+\begin{itemize}
+\item $U$ = number of red balls in urn
+\item $A$ = number of red balls in sample of $k$
+\end{itemize}
+
+{\em Case 1: {\em Uniform Prior}}
+$P(U = j) = \frac {1} {n+1}$ for all $0 \leq j \leq n$
+
+With this assumption we found that the probability:
+\begin{displaymath}
+P(U=j \mid A=i) = \frac { {j\choose i}{{n-j}\choose{k-i}}}{{{n+1}\choose{k+1}}}
+\end{displaymath}
+
+given total ignorance about the total number of j.  If we extract nothing
+then $i=0$ and $k=0$, therefore we get:
+\begin{displaymath}
+P(U=j \mid A=i) = \frac {1} {n+1}
+\end{displaymath}
+
+When we extract only 1 ball and it is red, then $k=1$ and $i=1$, hence:
+
+\begin{displaymath}
+P(U=j \mid A=i) = \frac{{{j}\choose {1}}} {{{n+1}\choose {2}}}= \frac {2j}{(n+1)n}
+\end{displaymath}
+
+\begin{displaymath}
+\sum_{j=0}^{n} P(U=j \mid A=1) = \sum_{j=0}^{n} P_{(A=1)} (U=j) = 1
+\end{displaymath}
+which is the sum of all random variables so,
+\begin{displaymath}
+\sum_{j=0}^{n} \frac{2j}{n(n+1)} = 1\\
+\sum_{j=0}^{n} j = \frac{n(n+1)}{2}
+\end{displaymath}
+as in high school.
+
+{\em Case 2:  {\em Conjugate Prior}}
+
+\begin{displaymath}
+P(U=j) = P (X_1 + X_2 + ...+ X_n = j)
+       = P(S_n = j) = {n\choose j} p^j q^{n-j}
+\end{displaymath}
+$X_i$'s are the Bernoulli Random Variables.  We take the final result as a prior and plug into Baye's formula.  The posterior is then
+\begin{displaymath}
+P(U=j \mid A=i) = {{n-k}\choose{j-i}}p^{j-i} q^{n-k-(j-i)}
+\end{displaymath}
+What does this tell us?  We take and set $j=i+r$, since $j \neq s$.
+\begin{displaymath} 
+P(U=i+r \mid A=i) = {{n-k}\choose{r}}p^r q^{n-q-r}
+\end{displaymath}
+
+This reproduces itself, hence the name of conjugate prior.  Let's do now the same problem with replacement, which is easier to think about, but the result is messier.
+
+{\em Baye's Sampling with Replacement}
+
+Again, in an urn with $j$ red balls and $n-j$ black balls
+\begin{displaymath}
+P(A=i \mid U=j) = {k\choose i} \left(\frac{j}{n}\right)^i \left( \frac{n-j}{n} \right)^{k-i}
+\end{displaymath}
+\begin{displaymath}
+P(U=j \mid A=i) = \frac{{{k} \choose {i}} \left(\frac{j}{n} \right)^i
+\left(\frac{n-j}{n} \right)^{k-i} P(U=j)}{\sum_{j=0}^{n} {{k}\choose {i}} \left( \frac{j}{n}^i\right)\left( \frac{n-j}{n} \right)^{k-i} P(U=j)}
+\end{displaymath}
+\begin{displaymath}
+                = \frac{\left( \frac{j}{n} \right)^i \left( \frac{n-j}{n} \right)^{k-i}P(U=j)}{\sum_{j=0}^{n} \left( \frac{j}{n} \right)^i \left(\frac{n-j}{n} \right)^{k-i}P(U=j)}
+\end{displaymath}
+Again, we can divide the problem in two cases.
+
+{\em Case 1 {\em Uniform Prior}}
+
+$P(U=j) = \frac {1}{n+1}$ for $0 \leq j \leq n$
+
+The posterior is then given by
+\begin{displaymath}
+P(U=j \mid A=i) = \frac {\left( \frac{j}{n}\right)^i \left(\frac{n-j}{n}\right)^{k-i}}{mess}
+\end{displaymath}
+We don't need to know what mess is because as we have said before, it is just
+a normalization factor.  Therefore, we can write
+\begin{displaymath}
+P(U=j \mid A=i) \propto \left( \frac{j}{n}\right)^i \left(\frac{n-j}{n}\right)^{k-i}
+\end{displaymath}
+
+{\em Case 2 {\em Conjugate Prior}}
+From before, we can just say
+
+\begin{displaymath}
+P(U=j) \propto \left(\frac{j}{n}\right)^t \left(\frac{n-j}{n}\right)^{r-t}\\
+\end{displaymath}
+
+and the posterior (as before but with the change of proportionality) is given by
+\begin{displaymath}
+P(U=j \mid A=i) \propto \left(\frac{j}{n}\right)^i \left(\frac{n-j}{j}\right)^{k-i} \left(\frac{j}{n}\right)^t \left(\frac{n-j}{n}\right)^{r-t}
+\end{displaymath}
+
+\begin{displaymath}
+                 \propto \left(\frac{j}{n}\right)^{i+t} \left(\frac{n-j}{n} \right)^{k+r-i-t}
+\end{displaymath}
+

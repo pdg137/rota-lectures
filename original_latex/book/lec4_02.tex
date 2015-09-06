@@ -1,0 +1,50 @@
+{\Large 18.313, Lecture 19, Friday, April 2, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\newline
+Transcribed by Carla M. Pellicano (carpel@mit.edu) and Peter Shulman (skip@mit.edu)\newline
+
+{\bf Continuous Conditional Probability}\newline
+\noindent\underline{Dirichlet (uniform) Process}: (continued)
+
+Analyzing the Dirichlet Process, we have the order statistics $X_{(1)},X_{(2)},...X_{(n)}$, which represent $n$ points distributed randomly on the interval $[0,a]$.  Previously, we calculated the joint density of these order statistics.
+\begin{eqnarray*}
+dens(X_{(1)}=t_1,X_{(2)}=t_2,...X_{(n)}=t_n)=\frac{n!}{a^n}
+\end{eqnarray*}
+
+We know that we can find any joint density by integrating the individual densities.  For example, to find the joint density of $X_{(1)}$, we integrate $X_{(2)}$ through $X_{(n)}$, as long as $(t_1\leq t_2\leq...\leq t_n)$.  We derived the following expression,
+\begin{eqnarray*}
+\int_{t_n=0}^a\!\int_{t_{n-1}=0}^{t_n}\!\!...\int_{t_1=0}^{t_2}\!\!dt_1...dt_n=\left(\frac{n!}{a^n}\right)^{-1}
+\end{eqnarray*}
+
+\noindent\underline{Continuous Density}
+
+This is the toughest part of continuous conditional probability, namingly the discussion of continuous density, leading up to the continuous analog of the {\em law of alternatives}.  First, we will find the conditional probability distribution of the order statistics $X_{(1)}$ and $X_{(2)}$.  Differentiating this answer, we will find an expression for the density.  Finally, we will derive an equation for the continuous density of the order statistics.
+
+We want to find the probability distribution, $P(X_{(2)}>t|X_{(1)}\leq s)$.  First, we'll calculate something easier, namingly $P(x_{(2)}>t|X_{(1)}>s)$.  The conditional probability requires that no points fall before $s$ on our sample space.  By conditional probability, 
+\begin{eqnarray*}
+P(X_{(2)}>t|X_{(1)}>s)=\frac{P((X_{(2)}>t)\cap(X_{(1)}>s))}{P(X_{(1)}>s)}
+\end{eqnarray*}
+
+The event $((X_{(2)}>t)\cap(X_{(1)}>s))$, where $s<t$, indicates that {\em at most} one point lies on the interval $[s,t]$, and that at least $(n-1)$ points lie on the interval $[t,a]$.  This probability, therefore, is given by,
+\begin{eqnarray*}
+P(X_{(2)}>t\cap X_{(1)}>s)&=&\underbrace{\frac{(a-t)^n}{a^n}}_{\mbox{all points on [t,a]}}+\underbrace{\frac{n(t-s)}{a}\frac{(a-t)^{n-1}}{a^{n-1}}}_{\mbox{1 on $[s,t]$, rest on $[t,a]$}} \\
+P(X_{(2)}>t|X_{(1)}>s)&=&\frac{\frac{(a-t)^n}{a^n}+\frac{n(t-s)(a-t)^{n-1}}{a^n}}{\frac{(a-s)^n}{a^n}}\\
+                      &=&\frac{(a-t)^n+n(t-s)(a-t)^{n-1}}{(a-s)^n}
+\end{eqnarray*}
+
+Now let's calculate the density of the second order statistic, with the condition that $(X_{(1)}>s)$.  This condition tells us that all marbles fall between $[s,a]$.  Since these gaps are exchangeable, this interval is the same as the interval $[0,a-s]$.  Density is given by,
+\begin{eqnarray*}
+dens(X_{(2)}=t|X_{(1)}>s)&=&\frac{{n\choose{1,1,n-2}}(t-s)(a-t)^{n-2}}{(a-s)^n}\\
+P(X_{(2)}>t|X_{(1)}\leq s)&=&\frac{P((X_{(2)}>t)\cap(X_{(1)}\leq s))}{(X_{(1)}\leq s)}\\
+                          &=&\frac{{n\choose{1,0,n-1}}\frac{s}{a}\frac{(a-t)^{n-1}}{a^{n-1}}}{1-\frac{(a-s)^n}{a^n}}
+\end{eqnarray*}
+
+Now we'd like to find the joint density of the second order statistic, given the density of the first order statistic, $dens(X_{(2)}=t|X_{(1)}=s)$.  The condition $X_{(1)}=s$ decreased the number of points being dropped by one, and reduces the interval to $[s,a]$.  Then, $X_{(2)}$ is promoted to $X_{(1)}$, a variable whose density we know how to calculate.  
+\begin{eqnarray*}
+dens(X_{(2)}=t|X_{(1)}=s)={n-1\choose{0,1,n-2}}\frac{1}{a}\frac{(a-t)^{n-2}}{(a-s)^{n-1}}
+\end{eqnarray*}
+
+Unfortunately this is meaningless without taking limits.  We cannot take a conditional probability relative to a density, since the density is not defined.  We must replace this density with an event, namingly the event $(s<X_{(1)}\leq s+ds)$.  Take instead, $dens(X_{(2)}=t|s<X_{(1)}\leq s+ds)$.
+\begin{eqnarray*}
+\lim_{\Delta t\to\infty}P(t<X_{(2)}\leq t+\Delta t|s<X_{(1)}\leq s+\Delta s)
+\end{eqnarray*}
+

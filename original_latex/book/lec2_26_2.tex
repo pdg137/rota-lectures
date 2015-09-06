@@ -1,0 +1,109 @@
+{\Large 18.313 Lecture 10, Friday, February 26, 1999}\newline
+{\large Prof. G.-C. Rota}\newline
+Transcribed by Daniel Vlasic (drdaniel@mit.edu) and Pegah Ebrahimi (ebrahimi@mit.edu) \\\\
+
+\section{Conditional Probability (continued)}
+
+\subsection{Exchangable Random Variables (continued)}
+
+{\bf Review:}  Say we have three random variables $X_1, X_2. X_3$ ; they are exchangable when:
+\begin{eqnarray*}
+P((X_1=i) \cap (X_2=j) \cap (X_3=k)) &=& P((X_1=k) \cap (X_2=j) \cap (X_3=i)) \\
+ &=& \mbox{any other permutation}\\
+P(X_1=i) &=& \sum_{j,k} P((X_1=i) \cap (X_2=j) \cap (X_3=k)) 
+\end{eqnarray*}
+
+Why? Because
+\begin{eqnarray*}
+(X_1=i) &=& (X_1=i) \cap \Omega \qquad (\ast)\\
+\Omega &=& \bigcup_j (X_2=j)= \bigcup_k (X_3=k) \\
+\Omega &=& \bigcup_j (X_2=j) \cap \bigcup_k (X_3=k) \\
+\Omega &=& \bigcup_{j,k} (X_2=j) \cap(X_3=k)
+\end{eqnarray*}
+
+Substituted in ($\ast$) we obtain:
+\begin{eqnarray*}
+(X_1=i) &=& (X_1=i) \cap \bigcup_{j,k} (X_2=j) \cap (X_3=k) \\
+&=& \bigcup_{j,k} (X_1=i) \cap (X_2=j) \cap (X_3=k) \\
+P(X_2=i) &=& \sum_{j,k} P((X_1=j) \cap (X_2=i) \cap (X_3=k) = P(X_1=i) 
+\end{eqnarray*}
+
+Thus, exchangable random variables are {\it i.d.}
+
+\subsection{The Polya Urn Process}
+\begin{itemize}
+\item[] There is an urn with $r$ red balls and $b$ black balls
+\item Extract a ball, replace $c+1$ balls of the color extracted; repeat
+\end{itemize}
+\[X = \left\{\begin{array}{ll}
+	      1    &\mbox{if the $n^{th}$ ball is red} \\
+	      0    &\mbox{if the $n^{th}$ ball is black}
+	      \end{array}
+	\right. \]	
+
+\begin{eqnarray*}
+P(X_1=1) &=& \frac{r}{r+b} \\
+P(X_1=0) &=& \frac{b}{r+b} \\
+P((X_1=1) \cap (X_2=0)) &=& P((X_1=1)P(X_2=0|X_1=1) \\
+                        &=& \frac{r}{r+b} \cdot \frac{b}{r+b+c} \\
+P((X_1=1) \cap (X_2=1)) &=& \frac{r}{r+b} \cdot \frac{r+c}{r+b+c}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+P((X_1=i_1) \cap (X_2=i_2) \cap...\cap (X_n=i_n)) = P((X_1=i_1) \cap (X_2=i_2|X_1=i_1)... = \\
+\frac{r(r+c)(r+2c)...(r+ (i-1)c) \cdot b(b+c)(b+2c)...(b+(j-1)c)}{(r+b)(r+b+c)(r+b+2c)...(r+b+(n-1)c)}
+\end{eqnarray*}
+
+Where there are $i$ reds, $j$ blacks, and $i+j=n$
+
+Therefore, the n random variables $X_i$ are exchangable.
+
+\begin{itemize}
+\item $c= 0$ means ``sampling with replacement''
+\item $c=-1$ means ``sampling without replacement''
+\end{itemize}
+
+$P(X_2=1) = \underbrace {P(X_2=1|X_1=0)P(X_1=0)+P(X_2=1|X_1=1)P(X_1=1)}_{\mbox{DON'T HAVE TO DO THAT}}$
+$ = \frac{r}{r+b} $
+
+Another Process:
+\begin{itemize}
+\item[] There are $r$ red balls and $b$ black balls in an urn
+\item if red is picked, replace with $c_r+1$ reds
+\item if black, replace with $c_b+1$ blacks
+\end{itemize}
+
+\begin{eqnarray*} 
+P(X_1=1) &=& \frac{r}{r+b} \\
+P(X_1=0) &=& \frac{b}{r+b} \\
+P((X_1=1) \cap (X_2=0)) &=& P(X_1=1)P(X_2=0|X_1=1) = \frac{r}{r+b} \cdot \frac{b}{r+b+c_r} \\
+P((X_1=0) \cap (X_2=1)) &=& \frac{b}{r+b} \cdot \frac{r}{r+b+c_b} 
+\end{eqnarray*}
+
+\subsection{Example: Bernouli Process}
+A=event that the first run of $h$ heads occurs before the first run of $t$ tails\\
+Warm-up: $P(A|(X_1=1) \cap (X_2=0))$
+
+Sample space is all sample points: \\
+$(1, 0, w_3, w_4, w_5 \ldots)$ \\
+$P(A|(X_1=1) \cap (X_2=0)) = P(A|X_1=0)$
+
+similarly,
+\begin{eqnarray*}
+P(A|(X_1=1) \cap (X_2=1) &\cap& ... \cap (X_i=1) \cap (X_{i+1}=0)) = ? \\
+w = (111...10w_{i+2}w_{i+3}...) &&\\
+&=&P(A|X_1=0) if i < h\\
+&=&1 if i \geq h
+\end{eqnarray*}
+
+similarly, $P(A|(X_1=0) \cap (X_2=0) \cap ... \cap (X_i=0) \cap (X_{i+1}=1)) = ?$\\
+Sample space consists of all points: $\omega=(\underbrace{000...0}_i1\omega_{i+2}\omega_{i+3}...)$
+
+$P(A|X_1)P(X_1=1)+P(A|X_1=0)P(X_1=0)=\underbrace{P(A|X_1=1)}_?p+\underbrace{P(A|X_1=0)q}_?$\\
+$P(A|X_1=1)=P_{(X_1=1)}(A)$
+
+Let $W_0$ be the waiting time for the first tail,
+\begin{displaymath} P_{(X_1=1)}(W_0>i) = p^{i-1}; \indent  P_{(X_1=1)}(W_0 \leq i) = 1-P_{(X_1=1)}(W_0>i) = 1-p^{i-1} \end{displaymath}
+
+we will finish this next time
+

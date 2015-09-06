@@ -1,0 +1,73 @@
+{\Large 18.313 Lecture 10, Friday, February 26, 1999}\newline
+{\large Lecture by Prof. Gian Carlo Rota}\newline
+Transcribed by Carla M. Pellicano (carpel@mit.edu)\newline
+
+\noindent {\bf Conditional Probability} (continued):
+
+Review of Exchangeable Random Variables
+
+Say we have three random variables $X_1, X_2, X_3.$  They are exchangeable when
+$$P((X_1= i) \cap (X_2 = j) \cap (X_3 = k)) = P((X_1 = k) \cap (X_2 = j) \cap (X_3 = i))$$
+or any other permutation.  Given three random variables, 
+$$P(X_1 = i) = \sum\limits_{j,k} P((X_1 = i) \cap (X_2 = j) \cap (X_3 = k)),$$
+because the event $(X_1 = i)$ is the same as $(X_1 = i) \cap \Omega$.  But $\Omega$ is also equal to $\bigcup\limits_{j} (X_2 = j)$ and $\bigcup\limits_{k} (X_3 = k)$.  Therefore, $\Omega = \bigcup\limits_{j} (X_2 = j) \cap \bigcup\limits_{k} (X_3 = k)$.  By the distributive law of union intersection, this is the same as
+$$
+\bigcup\limits_{j,k}  (X_2 = j) \cap (X_3 = k) = \Omega = \bigcup\limits_{j}  (x_2 = j) \cap \bigcup\limits_{k}  (X_3 = k).
+$$
+Substituting in $X_1$ we obtain, 
+$$
+(X_1 = i) = (X_1 = i) \cap \bigcup\limits_{j,k} (X_2 = j) \cap (X_3 = k) = \bigcup\limits_{j,k} (X_1 = i) \cap (X_2 = j) \cap (X_3 = k).
+$$
+\\
+If you know the joint distribution of random variables, you can obtain the single distribution. 
+$$
+P(X_2 = i) = \sum\limits_{j,k} P((X_1 = j) \cap (X_2 = i) \cap (X_3 = k)) = P(X_1 = i).
+$$
+We conclude that if three random variables are exchangeable, then they are also identically distributed.  The converse of this, however, is not true.
+
+\underline {Example:} Polya Urn Process
+
+What is a stochastic process?  A stochastic process is simply a sequence of random variables.  In specifying a stochastic process, we specify the distribution of those variables.  Random walks and sampling without replacement are examples of stochastic processes.  In the Polya Urn Process, we are given an urn containing $r$ red balls and $b$ black balls.  First, we extract a ball at random.  Then we replace $c+1$ balls of the same color and repeat the process.  We have once again, 
+$${X_1} = \left\{ \begin{array} {ll} 1 &\mbox{if the $n^{th}$ ball is red}\\ 0 & \mbox{if the $n^{th}$ ball is black} \end{array} \right. $$
+
+We know that the probability of drawing a red ball and the probability of drawing a black ball are  $$P(X_1 = 1) = \frac {r}{r+b}$$
+$$P(X_1 = 0) = \frac {b}{r+b}$$
+
+Then, by the law of successive conditioning, we can calculate the probability that the first drawing is red and the second drawing is black.
+$$P((X_1 = 1) \cap (X_2 = 0))  =  P(X_1 = 1)P(X_2 = 0|X_1 = 1)  = \frac {r}{r+b} \cdot \frac {b}{r+b+c}$$
+
+The law of successive conditioning states:
+\begin{eqnarray*}
+P((X_1 = i_1) \cap (X_2 = i_2) \cap \ldots \cap(X_n = i_n)) = \\
+P(X_1 = i_1) P(X_2=i_2|X_1= i_1)P(X_3=i_3|(X_1 = i_1) \cap (X_2 = i_2)).
+\end{eqnarray*}
+Let's say that we draw $i$ red balls and $j$ black balls, where $i+j=n$.  Once again, we'd like to calculate the probability distribution.  Calculating the denominator is relatively easy, because it increases by $c$ each time we extract a ball.  Calculating the numerator requires that we augment $a$ or $b$ by $c$ each time that we extract a ball.  The final expression is
+$$\frac{r(r+c)(r+2c)...(r+(i-1)c)\cdot b(b+c)(b+2c)...(b+(j-1)c)}{(r+b)(r+b+c)(r+b+2c)...(r+b+(n-1)c)}$$ 
+We know, therefore, that the random variables $X_1, X_2, X_3$ are exchangeable, just as they are in sampling with replacement due to the commutivity of multiplication.
+
+If $c$ in this example were zero, we would have a case of sampling with replacement.  Likewise, if $c$ were -1, we would have a case of sampling without replacement.
+
+Using the law of alternatives to compute, say $P(X_2 = 1),$ is unnecessary, since the random variables are exchangeable and identically distributed.
+
+Let's examine another example.  If a red ball is drawn, we replace $c_r + 1$ red balls, and if a black ball is drawn, we replace $c_b + 1$ black balls.  The probability of $X_1$ remains the same as in the previous example.  $$P(X_1 = 1) = \frac{r}{r+b}$$
+$$P(X_1=0)=\frac{b}{r+b}$$
+However, in calculating $X_2$ we find different results.  $$P((X_1=1) \cap (X_2 = 0)) = P(X_1= 1)P(X_2=0|X_1=1)=\frac{r}{r+b} \cdot \frac{b}{r+b+c_r}$$
+$$P((X_1=0) \cap P(X_2=1)) =P(X_1=0)P(X_2=1|X_1=0) =  \frac {b}{r+b} \cdot \frac{r}{r+b+c_b}$$
+
+The random variables in the example are not exchangeable unless $c_r = c_b$.  Sampling with replacement and sampling without replacement give exchangeable random variables.  Identically distributed random variables are not necessarily exchangeable.  Given $P(X_1 = i) = P(X_2 = i)$, the random variables $X_1$ and $X_2$ are identically distributed, however, $P((X_1= i) \cap (X_2 =j))$ does not necessarily equal $P((X_1 = j) \cap (X_2 = i))$.
+
+{\underline {Really Tough Example}: The Bernoulli Process}
+
+Let A be the event that the first run of $h$ heads occurs before the first run of $t$ tails.  Find $P(A|(X_1=1) \cap (X_2 = 0))$.  Our sample space is the set of all sample points (1, 0, $\omega_3, \omega_4, \omega_5 \ldots$).  The sample point, $\omega_1 = 1$ makes no difference in this case, since it is followed by $\omega_2 = 0$.
+
+Thus, $P(A|(X_1=1) \cap (X_2 = 0)) = P(A|X_1 = 0)$. \\
+Similarly, in the sample space $\omega = (1, 1, 1, 1 \dots 1, 0, \omega_{i+2},
+\omega_{i+2} \ldots)$.
+\begin{displaymath}
+{P(A|(X_1=1) \cap (X_2=1) \cap ... \cap (X_i = 1) \cap (X_{i+1} =
+0))}= \left\{ \begin{array} {ll} 1 &\mbox{if number of 1's $>$  h}\\ 0
+& \mbox{if number of 1's $<$ h} \end{array} \right. 
+\end{displaymath}
+Using the law of alternatives, $$P(A)=P(A|X_1=1)P(X_1=1) + P(A|X_1=0)P(X_1=0)=P(A|X_1=1)p + P(A|X_1 = 0)q.$$  We need to compute the probability that the first toss is zero and the probability that the first toss is one,  $P(A|X_1=1)$ and $P(A|X_1=0).$ $ $  We find that $P(A|X_1 =1)= P_{X_1=1}(A).$  Assume that the first toss is a head, what is the waiting time for the first tail?  
+
+

@@ -1,0 +1,108 @@
+\noindent {\Large 18.313, Lecture 18, Wednesday, March 31, 1999}\newline
+\noindent {\large Lecture by Prof. Gian Carlo Rota}\newline
+\noindent Transcribed by Luis A. Benitez (luisb@mit.edu)\newline
+
+{\bf Joint Distributions and Joint Densities}:
+
+In the Dirichlet Process, a random varialbe $X$ always has a cumulative distribution:
+\begin{displaymath}
+P(X \leq t) = F_X(t)
+\end{displaymath}\\
+We can divide this into two cases.  One when the random variable is an integer random variable.  And the second case will be a continuous random variable.  In the first case, when $X$ is an integer random variable we have,
+\begin{center}
+$P(X=n) = p_n$\\
+$F_X(t) = P(X \leq t) = \sum_{n \leq t} p_n$\\
+\end{center}
+If the random variable $X$ has a density given by, $dens(X=t) = f(t)$, then,
+\begin{center}
+$P(X \leq t) = \int_{-\infty}^{t} f(s)\, ds$\\ 
+$f(t) \geq 0 \, \int_{-\infty}^{\infty} f(s)\, ds = 1$\\
+\end{center}
+Now, the joint cumulative distribution for two random variables $X$ and $Y$,
+\begin{displaymath}
+P((X \leq t) \cap (Y \leq s)) = F(t,s)
+\end{displaymath}
+Thus, the joint density of $X$ and $Y$ is easily calculated as:
+\begin{center}
+$f(t,s) \geq 0$\\
+$P((a \leq X \leq b) \cap (c \leq Y \leq d))= \int_{t=a}^{b} \int_{s=c}^{d} f(t,s) \, dtds$\\
+\end{center}
+We have again:
+\begin{center}
+$f_X(t) = \int_{s=-\infty}^\infty f(t,s) \, ds$
+$f_Y(s) = \int{t=-\infty}^\infty f(t,s) \, dt$
+\end{center}
+\begin{center}
+$P(a \leq X \leq b) = \int_a^b \int_{-\infty}^\infty f(t,s)\, ds dt$
+$P(-\infty < X \leq t) = \int_{-\infty}^t \int_{-\infty}^\infty f(t,s)\, ds dt$
+\end{center}
+Differentiating the last one we get in terms of t:
+
+\begin{displaymath}
+f_X(t) = \int_{-\infty}^\infty f(t,s)\, ds
+\end{displaymath}\\
+{\em Order Statistics for the Dirichlet process}\\
+We have the following random variables which are i.i.d. and uniform in the 
+interval $[0,a]$:
+\begin{displaymath}
+X_1, X_2, \ldots, X_n
+\end{displaymath}
+\begin{displaymath}
+dens(X_1 = t, X_2 = s) = f(t,s) =  ?
+\end{displaymath}
+\begin{displaymath}
+P((X_1 \leq t) \cap (X_2 \leq s)) = P(X_1 \leq t) P(X_2 \leq t)
+\end{displaymath}
+\begin{displaymath}
+=\frac {1} {a} \int_0^t \, dt \, \frac {1} {a} \int_0^s \, ds
+\end{displaymath}
+\begin{displaymath}
+= \frac{1} {a^2} \int_0^t \int_0^s \, dt ds
+\end{displaymath}
+Hence, the joint density of $X_1$ and $X_2$ is given by:
+\begin{displaymath}
+f(t,s) = \left\{ \begin{array}{ll}
+ a^2  & \mbox{for $0 \leq t \leq a$ and $0 \leq s \leq a$}\\ 
+ 0    & \mbox{otherwise} \end{array}\right.
+\end{displaymath}
+If $X$ and $Y$ are independent, then:
+\begin{eqnarray*}
+P((X \leq t) \cap (Y \leq s))& &\\
+& = & P(X \leq t) P (Y \leq s)\\
+& = & \int_{-\infty}^t f_X(t) \, dt \int_{-\infty}^s f_X(s)\,ds\\
+& = & \int_{-\infty}^t \int_{-\infty}^s f_X(t)\,f_X(s)\,dt \, ds
+\end{eqnarray*}
+From the above solution we can easily determine the joint density of
+$X_{(i)}$ and $X_{(j)}$.  In this problem we are going to safely assume that
+$i < j$.  Then:
+\begin{displaymath}
+dens(X_{(i)} = t, X_{(j)} = s )\,dt\,ds = 
+\end{displaymath}
+\begin{displaymath}
+\left(\begin{array}{c} n\\ i-1, 1, j-i-1,1,n-j \end{array}\right) \left( \frac {t} {a} \right)^{i-1}\, \frac {dt} {a} + \frac {(s-t-dt)^{j-i-1}} {a^{j-i-1}} 
+\, \frac {ds} {a} \, \frac{(a-s-ds)^{n-j}} {a^{n-j}}
+\end{displaymath}
+\begin{displaymath}
+dens (X_{(i)}=t) = \left( \begin{array}{c} n\\ n-1, 1, n-i \end{array} \right) 
+\frac {t^{i-1} (a-t)^{n-i}} {a^n}
+\end{displaymath}
+\begin{displaymath}
+ = \int_{s=t}^a \left( \begin{array} {c} n\\ i-1, 1, j-i-1, 1 , n-j \end{array} \right) \frac {t^{i-1} (s-t)^{j-i-1} (a-s)^{n-j}} {a^n} \, ds
+\end{displaymath}
+
+As a sanity check, we should verify that the denominator is always $a^n$, which in this case it is true.  We can extrapolate this result to get the joint density of all the order statistics random variables:
+
+\begin{displaymath}
+dens(X_{(1)}= t_1, X_{(2)}=t_2, \ldots , X_{(n)} = 
+\left\{ \begin{array}{ll}
+\frac {\left( \begin{array}{c} n\\ 0,1,0,1 \ldots \end{array} \right)} {a^n} &      \mbox{for $0 \leq t_1 \leq t_2 \leq t_3 \ldots \leq t_n \leq a$}\\ \\
+ 0 & \mbox{otherwise} \end{array}\right.
+\end{displaymath}
+\begin{displaymath}
+= \int_0^a \int_{t_1}^a \int_{t_2}^a \cdots \int_{t_n}^a \, n! \frac {dt_1 \, dt_2 \, dt_3 \ldots dt_n} {a^n} = 1
+\end{displaymath}
+\begin{displaymath}
+= \int_0^a \int_{t_1}^a \int_{t_2}^a \cdots \int_{t_n}^a \,dt_1 \, dt_2 \, dt_3 \ldots dt_n  = \frac {a^n} {n!}
+\end{displaymath}\\
+You can try to solve the integral by hand, but of course using a probabilistic way is always easier!  Show this to your friends and amaze them!!
+

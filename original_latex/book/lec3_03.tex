@@ -1,0 +1,44 @@
+{\Large 18.313 Lecture 11, Wednesday, March 3, 1999}\newline
+{\large Lecture by Prof. Gian Carlo Rota}\\
+Transcribed by Carla M. Pellicano (carpel@mit.edu)\\
+
+\noindent {\bf Conditional Probability} (continued):
+
+\noindent\underline{Bernoulli Process}\\
+Let $A$ be the event that the first run of $h$ heads will occur before the first run of $t$ tails.  By the {\em law of alternatives}:
+\begin{eqnarray*}
+P(A)=P(A|X_1=1)\underbrace{P(X_1=1)}_{p}+P(A|X_1=0)\underbrace{P(X_1=0)}_{q}
+\end{eqnarray*}
+
+If we can compute these two conditional probabilities, $p$ and $q$, then we can compute the probability of $A$. 
+\begin{eqnarray*}
+P((A|X_1=0)\cap(X_2=1))=P(A|X_1=1)
+\end{eqnarray*}
+
+We want to compute this probability on all sample points.  Given any sample space of zeros and ones, as long as the all preceeding runs have fewer than $t$ zeros, we can begin computing $P(A)$ with the last run of ones.  Take for example, the sample space:  $(0, 1, \omega_3, \omega_4,...)$.  If we let $t=5$ and $h=7$, then we can begin counting from $\omega_2$, the first one in our sample space.
+\begin{eqnarray*}
+P_{(X_1=1)}(A) = P_{(X_1=1)}(A|W_o \leq h)P_{(X_1=1)}(W_o \leq h)+P_{(X_1=1)}(A|W_o > h)P_{(X_1=1)}(W_o > h)
+\end{eqnarray*}
+
+$W_o$ represents the waiting time for the first zero and events $(W_o \leq h)$ and $(W_o > h)$ partition $\Omega$.  Once we get our first zero, we have to start counting over again.
+\begin{eqnarray*}
+P(A|X_1=0) P_{(X_1=1)}(W_o \leq h) + P_{(X_1=1)}(W_o > h) = P(A|X_o=0)(1-p^{k-1}) + p^{h-1} \\
+P(A|X_1=1) = P(A|X_1=0)(1-p^{h-1}) + p^{h-1} \\
+P_{(X_1=0)}(A) = P_{(X_1=0)}(A|W_1 \leq t) P_{(X_1=0)}(W_1 \leq t) + P_{(X_1=0)}(A|W_1 > t) P_{(X_1=0)}(W_1 > t)
+\end{eqnarray*}
+
+Where $W_1$ is the waiting time for the first 1.  $P_{(X_1=0)}(A|W_1 > t)$ must equal zero, because we would have already lost! (having already gotten a run of t tails).
+\begin{eqnarray*}
+P_{(X_1=0)}(W_1>t) = q^{t-1} \\
+P_{(X_1=0)}(W_1 \leq t) = 1 - q^{t-1} \\
+P_{X_1}(A)=P(A|X_1=1)(1-q^{t-1}) \\
+\end{eqnarray*}
+
+For our final answer, we get:
+\begin{eqnarray*}
+P(A) = \frac{(p^{h-1})(1-q^t)}{p^{h-1}+q^{t-1}-p^{h-1}q^{t-1}}
+\end{eqnarray*}
+
+\noindent\underline{easy example}:  Monty Hall Paradox\\
+Let's say we have 100 boxes, one of which contains a marble.  We also have two people, one good guy and one bad guy (the good guy doesn't know which box contains the ball, the bad guy does).  Step 1:  the good guy chooses a box.  Let $A$ be the event that the good guy chooses the box with the marble.  We know that $P(A)=1/100$.  Step 2:  the bad guy opens 98 boxes, which contain no marbles.  He then offers to trade his remaining box with the good guy.  The good guy switches, since the probability that he has chosen correctly the first time was 1/100, while the chance of choosing correctly now, is 1/2.
+

@@ -1,0 +1,204 @@
+{\Large 18.313 Lecture 15, Friday, March 12, 1999}\\
+{\large Lecture by Prof. Gian-Carlo Rota}\\
+Transcribed by Vidya Kadiyam (vidya@mit.edu) and Michael B. Rasmussen (mibras@mit.edu)\\
+
+{\bf Random Variables (General Theory)}
+
+Today we start on continuous probability, namely random variables.
+The General Theory on Random Variables.
+Let's have a few words on random variables.
+What is a random variable in general?
+\par The most general definition of a random variable is: 
+Given a sample space $\Omega$  with events (events are defined in
+boolean $\sigma$-algebra), a random variable X is a function X:
+$\Omega \mapsto$ real numbers, sometimes written $X(\omega) =$ real
+number.
+Not any old function is a random variable.
+We relate a random variable to an event by specifying that any pair of
+real numbers a and b, such that $a \leq b$:
+\begin{displaymath}
+ (a < X \leq b) = \{\omega \in \Omega: a < X (\omega) \leq b\} 
+\end{displaymath} 
+But because you don't think of it in the set-theoretical way, from now on we will write it probabilistically $(a < X \leq b)$.
+This is an event. Maybe empty, but an event. So just about anything is
+an event. Observe that the event \begin{displaymath}
+ (a < X \leq b) = (X \leq b) - (X \leq a)  \end{displaymath}
+
+Associated with every random variable is the cumulative distribution of the
+random variable $X$:
+\begin{displaymath}
+ F_{x}(t)= F(t) = P(X \leq t) 
+\end{displaymath}
+
+$ F_{x}(t)$  is the cumulative probability distribution. It gives information
+about the statistical behavior of the random variable.
+For example, \begin{displaymath} P(a < X \leq b) = F_{x}(b) - F_{x}(a)
+\end{displaymath}
+
+What is a typical example of a random variable?
+\par {\bf Ex.1}
+$X$ is an integer random variable (which we have seen, but we have not
+used cumulative distribution because we didn't need it):
+\begin{displaymath} F_{x}(t)= \sum_{n \leq t}^{} P(X=n) \end{displaymath}
+So if you plot the cumulative distribution.
+
+{\bf Ex.2}
+Consider a statistical experiment: Pick a random point on the interval
+zero to a.
+
+{\bf Q:} Can it go negative?
+
+{\bf A:} Yes
+
+[Prof. Rota distributes two pens to each of the top 10 scorers on Quiz
+1]
+That was the top ten. Gee, I finished my Coke already! [Sigh]
+
+{\bf Q:} You want another one?!
+
+Probability of picking any point is zero, but intuitively, 
+\[ P(c < X \leq d) = \frac{d-c}{a} \]
+
+
+You can also write \[P([c, d]) = \frac{d-c}{a} \] but it is better to
+specify a sample space using random variables.
+
+What is the cumulative distribution of the random variable?
+\[ F_{x}(t) = \left\{ \begin{array}{ll} 0 & \mbox{if $t < 0$} \\
+\frac{t}{a} & \mbox{if $0 \leq t \leq a $} \\ 1 & \mbox{if $t > a$}
+\end{array} \right. \]
+\[ P(c < X \leq d) = F_{x}(d) - F_{x}(c)\] as indicated.
+
+Observe the following non-trivial statement:
+List all rational numbers in $[0,a]: r1, r2, ...$
+Say $a=1$ for sake of argument, then 
+\[ 0, \frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4},..., 1
+\]
+\[P(r_{i})=0 \]
+
+Countable additivity tells you \[P(\{r_{1}, r_{2}, r_{3}, ...\}) =
+\sum_{n} P(r_{n}) = 0\]
+However, \[P([0,1]) = 1\]
+This is the simplest proof that irrational numbers exist.
+
+{\bf Q:} This is also the proof of all transcendentals?
+
+{\bf A:} Good point. You get a pen.
+
+Let's go on with cumulative distribution.
+Properties of cumulative distribution are as follows: \[F_{x}(t_{1})
+\leq F_{x}(t_{2})\]
+for $t_{1} < t_{2}$
+ Why? Because \[(X_{1} \leq t_{1}) \subseteq (X \leq t_{2}).\]
+The bigger the event, the bigger the probability, since cumulative
+probability is increasing.
+The limit is the probability that X takes any value. This probability is the
+whole sample space, there are no restrictions on X.
+\[ \lim_{t \rightarrow \infty} F_{x}(t)=1\]  
+\[ P(-\infty<X<\infty) = P(\Omega)=1\]
+Honest fact is that they take on $\Omega$ at probabilities equal to zero
+\[ \lim_{t \rightarrow -\infty} F_{x}(t)=0\]
+
+It is hard to infer anything from the graph of the cumulative distribution, so let's
+introduce another notion.
+We say that $X$ is continuous when $P(X=t)=0$ for all real numbers t. We
+have seen one example a moment ago.  It is the same as saying that the
+cumulative distribution $F_{x}(t)$ is a continuous function. For example,
+for integer random variables, the cumulative function isn't a constant
+function, it jumps.
+$X$ has a density $dens(X=S)=F(S)$ when \[F_{x}(t)=
+\int_{-\infty}^{t} F(S) dS =
+\int_{-\infty}^{t} dens(X=S) dS.\]
+Not every random variable has a density.
+For example, consider picking a point at random in the interval zero to
+a. Then
+\[ dens(X=S) =\left\{ \begin{array}{rcl} \frac{1}{a} & \mbox{if $0 \leq S \leq a$}\\
+ 0 & \mbox{elsewhere}\end{array} \right. \]
+By the way, we will have a review session on Monday unless you
+object. Okay with you? Or do you want more material?
+
+{\bf Q:} More material!
+
+{\bf A:} Who says more? [showing of hands] Two? Who says review? No clear majority...
+\[ P(c<x \leq d) = \frac{1}{c} = \frac{d-c}{a} \]
+
+
+{\bf Q:} Prof. Rota, does S have to be strictly greater than 0?
+
+{\bf A:} Can be either.
+
+A density has the following properites: $F(t)= \frac{d}{dt} F_{x}(t)$ by the
+Fundamental Theorem of Calculus.
+
+Since $F_{x}(t)$ is an increasing function, it follows that the derivative
+is positive, $F(t) \geq 0.$
+Furthermore, since $ lim_{t \rightarrow \infty} F_{x}(t)=1$, it follows that
+\[\int_{-\infty}^{\infty} F(S) dS=1.\]
+
+Now we are almost finished with the general grammar. 
+We have to consider several random variables.
+Let's consider 2 and 3, then you can generalize to n.
+Take two random variables X and Y on the same sample space. The
+statistical behavior is determined by \[P((a<X\leq b) \cap ((c<Y\leq d))\] and
+this is completely determined by the joint cumulative distribution \[P(X
+\leq t) \cap (Y\leq S) = F(s,t)\]
+
+This material is hopelessly dull, but we have to cover it. And once we are done, we will never talk about it again.
+Consider the following formula which is an easy computation, so I'll copy it from the book:
+\[P((a<X\leq b) \cap (c<Y\leq d)) = \] \[P((X\leq b) \cap (Y\leq
+c)) + P((X\leq b) \cap (Y\leq d)) - P((X\leq a) \cap (Y\leq C)) -
+P((X\leq a) \cap (Y\leq d))\]
+
+Why this formula?
+The probability on the left is completely determined by the cumulative
+joint distribution. Cumulative joint distribution can determine the
+probability of a random variable between two points.
+
+X and Y are independent when \[P((a<X\leq b) \cap (c<Y\leq d)) =
+P(a< X\leq b) P(c<Y\leq d)\] for all a, b, c, d.
+We say two random variables are identically distributed when 
+$P(a<x\leq b) = P(a<Y\leq b)$. This is the same as:
+$F_{X}(t) = F_{Y}(t)$, the cumulative distribution of the
+set.
+
+When will we say that 3 random variables are exchangable? Intuitively, when we can
+permute them.
+X, Y, and Z are random variables, they are exchangable when
+\[P((a<X\leq b) \cap (c<Y\leq d) \cap (e<Z\leq f)) = \] \[P((a<Y
+\leq b) \cap (c<X\leq d) \cap (c<Z\leq d))\] = any
+other permutation of X, Y, Z
+
+{\bf Ex. 3:} Dirichlet (= uniform) process,
+
+We imagine having a continuous set of boxes. We pick $n$ points independently and at random in $[0,a]$. We then have $n$ i.i.d. random variables,
+$X_{1}, X_{2},..X_{n}$ each one with \[dens(X_{1}=t) = \left\{ \begin{array}{ll} \frac{1}{a} &\mbox{$0<t<a$} \\ 0 & \mbox{elsewhere} \end{array} \right. \]
+Observe we defined a sample space implicity by describing random variables and their density.
+
+Staticians ask this question:
+Are these points really random, they measure space and densities?
+
+We define a new random variable,
+
+ \[X_{(1)} = min(X_{1}, X_{2},...,X_{n})\] cumulative
+probabilities.
+\[P(X_{(1)}\leq t) = ? \] for $0<t<a$
+\[(X_{(1)}\leq t)^{C} = (X_{1}>t) \cap...\cap (X_{n})t\]
+\[1-P(X_{(1)}\leq t) =\frac{{(a-t)}^{n}}{{a}^{n}} \Rightarrow P(X_{(1)}\leq t) = 1- \frac{{(a-t)}^{n}}{{a}^{n}}\]
+
+so, to conclude, \[dens(X_{(1)}=t)=\frac{d}{dt}P(X_{(1)}\leq t)=\frac{{n}{(a-t)}^{(n-1)}}{{a}^{n}},\] this integrates to 1.
+
+The bigger the $n$, the greater the density and the probability will
+concentrate at the origin. 
+
+Next time, we will compute the max.
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+\noindent {\Large 18.313, Lecture 16, Friday, March 19, 1999}\newline
+\noindent {\large Lecture by Prof. Sara Billey (sara@math.mit.edu)}\newline
+Transcribed by Carla M. Pellicano (carpel@mit.edu)\newline
+
+\noindent{\bf Distributions and Densities}:
+
+If we have a continuous random variable $X$, then $X$ is a function, $X:\Omega\in\mathbf{R}$, extending to the real numbers.  $P(X\leq t)$ is a continuous function, increasing with $t$, and is piecewise differentiable.  This probability function, $P(X\leq t)=F(t)$ is called the {\em cumulative distribution function}.\\\\Events on a sample space look like unions of intervals.  For $(a<X\leq b)$, the $P(X=a)=0$, always.  Because of this piecewise differentiability, we can take the derivative and we call this the {\em density} of the continuous random variable.  The {\em density} is given by:
+$$\frac{d}{dt}P(X\leq t)=\frac{d}{dt}F(t)=dens(X=t)$$
+\underline{example 1}:\\\\if $X$ is uniformly distributed on $[0,a]$, then what is its probability distribution?
+$$F(t)= \left\{\begin{array} {lll} 0 & t<0\\\frac{t}{a} & 0\leq t\leq a\\1 & t>a \end{array}\right.\qquad\qquad dens(X=t)=\left\{\begin{array}{ll}\frac{1}{a} & 0\leq t\leq a\\0 & \mbox{otherwise}\end{array}\right.$$
+We have no way to get this distribution in reality.  What we get are approximations to the closest rational number, since long irrational numbers are unlikely to come up in a computer calculation.  In general, if we say ``y is chosen uniformly on a set,'' we mean that, 
+$$dens(Y=s)=\left\{\begin{array}{ll}\frac{1}{c}&s\in \mbox{set }\\0&\mbox{otherwise}\end{array}\right.$$
+where $c$ is chosen such that $$\displaystyle\int_{-\infty}^{\infty} dens(Y=s)=1$$
+\underline{example 2}:\\\\$X$ is exponentially distributed if
+$$dens(X=s)=\left\{\begin{array}{ll}\frac{1}{\theta}\,e^{-s/\theta}&0\leq s<\infty\\0&\mbox{otherwise}\end{array}\right.$$
+To get the probability distribution from the density, we integrate.
+$$P(X\leq t)=\int_{0}^{t} \frac{1}{\theta}\, e^{-s/\theta}ds = 1 - e^{-s/\theta}$$
+\\
+\underline{example 3}:\\\\$X$ has the 18.313 distribution:
+$$dens(X=s)=\left\{\begin{array}{llllll}1&0<s\leq 1\\8&1<s\leq 2\\3&2<s\leq 3\\1&3<s\leq 4\\3&4<s\leq 5\\0&\mbox{otherwise}\end{array}\right.$$  
+When we state a distribution, we simply specify the density.  How can we use a computer to get data from the 18.313 distribution?  We can plot the distribution along the $x$ axis, with values ranging from $[0,1]$ on the $y$ axis.  Selecting a point between $[0,1]$ on the $y$ axis on this distribution gives will still give us the region of highest density.\\\\\\\\\\\\\\\\
+It is also useful to find the distribution given density data.  We can draw a histogram and examine the function outlined by the bars.  The density function is the limiting case of a histogram.\\\\\\\\\\\\\\\\\underline{Uniform Processes}\\\\A uniform process is simply the random dropping of $n$ points on $[0,a]$.  We record the points in the random variables $X_1, X_2,...X_n$.\\\\\underline{Order Statistics}$$\begin{array}{lllll}X_{(1)}=\mbox{min}\{X_1,X_2,...X_n\}\\X_{(2)}=\mbox{second smallest of } \{X_1,X_2,...X_n\}\\\vdots\\X_{(n)}=\mbox{max}\{X_1,X_2,...X_n\}\end{array}$$
+In calculating the probability distribution of an order statistic, it is useful to remember that $P(X_{(1)}\leq t)=1-\frac{(a-t)^n}{a}$.  
+$$P(X_{(k)}\leq t)=\underbrace{{n\choose k}{\left(\frac{t}{a}\right)^k}{\left(\frac{a-t}{a}\right)}^{n-k}}_{\mbox{exactly $k$ fall in $[0,t]$}}+{n\choose{k+1}}{\left(\frac{t}{a}\right)}^{n-k-1}+...+{n\choose n}\left(\frac{t}{a}\right)^n$$If at least $k$ balls lie between $[0,t]$, we must make sure that the rest of the balls lie between $[t,a]$.  This probability distribution simplifies to:
+$$P(X_{(k)}\leq t)=\displaystyle\sum_{j=k}^{n}{n\choose j} \left(\frac{t}{a}\right)^{j}\left(\frac{a-t}{a}\right)^{n-j}$$
+\underline{example 4}:\\\\How do we find $dens(X_{(k)}=t)$?  We simply differentiate.  
+$$dens(X_{(k)}=t)=\lim_{h\to 0} \frac{P(X_{(k)}\leq t+h)-P(X_{(k)}\leq t)}{h}=\lim_{h\to 0}\frac{P(t\leq X_{(k)}\leq t+h)}{h}$$
+$$P(t\leq X_{(k)}\leq t+h)={n\choose{k-1,1,n-k}}\left(\frac{t}{a}\right)^{k-1}\left(\frac{h}{a}\right)\left(\frac{a-t-h}{a}\right)^{n-k}+h^2\mbox{(stuff)}$$
+$$={n\choose{k-1,1,n-k}}\frac{t^{k-1}(a-t)^{n-k}}{a^n}=dens(X_{(k)}=t)$$
+where $t$ lies on the interval $[0,a]$.\\\\\underline{neat trick}:\\$$\int_0^a{n\choose{k-1,1,n-k}}\frac{t^{k-1}(a-t)^{n-k}}{a^n}dt=1\qquad\Longrightarrow\qquad\int t^{k-1}(a-t)^{n-k}dt=\frac{a^n(k-1)!(n-k)!}{n!}$$
+\\\underline{example 5}: Record Values\\\\
+Let $X_1, X_2,...X_n$ be an infinite number of independent, identically distributed continuous random variables with any distribution.  Let $N$ be the smallest $n$ such that $X_n>X_1$.  What is $P(N=n)$?  Compute first $P(N>n)$.
+$$P(N>n)=\frac{(n-1)!}{n!}=\frac{1}{n}$$ $(N>n)$ is the event that $X_1$ is the correct point.
+$$P(N=n)=P(N>n-1)-P(N>n)=\frac{1}{n-1}+\frac{1}{n}=\frac{1}{n(n-1)}$$

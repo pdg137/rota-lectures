@@ -1,0 +1,217 @@
+{\Large 18.313 Lecture 20, Monday, April 5, 1999}\newline 
+{\large Lecture by Prof. Gian-Carlo Rota}\newline 
+Transcribed by Vladislav Gabovich (vyg@mit.edu) and Bilge Demirk\"oz (bilge@mit.edu)\newline
+
+\noindent {\bf Continuous Conditional Probability} (continued):
+
+Our objectives are:
+\begin{enumerate}
+\item{$P(X_1 \leq s | Y=t)=?$}
+\item{$dens(X_1 =s | Y=t)=?$}
+\end{enumerate}
+Note that the $2^{nd}$ expression is the derivative of the $1^{st}$ and so
+the real problem is to find the $1^{st}$ expression.
+
+Lets take an example of a Dirichlet process. 
+\begin{equation}
+P(X_1 >s | X_{(k)}=t)= ?
+\end{equation}
+What we can compute is the following:
+\begin{equation}
+P(X_{(1)}>s | t< X_{(k)}\leq t+\Delta t) = \frac{P((X_{(1)}>s) \cap (t<
+X_{(k)}\leq t+\Delta t))}{P(t<X_{(k)}\leq t+\Delta t)}
+\end{equation}
+Then we let $\Delta t \rightarrow 0$. Note that $k>1$.
+
+Numerator: 
+
+\setlength{\unitlength}{3947sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(2566,435)(1118,-1711)
+\thinlines
+\put(1163,-1486){\circle{74}}
+\put(3638,-1486){\circle{76}}
+\put(1913,-1486){\circle{76}}
+\put(2513,-1486){\circle{76}}
+\put(3038,-1486){\circle{76}}
+\put(1201,-1486){\line( 1, 0){2400}}
+\put(3601,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}a}}}
+\put(1876,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}s}}}
+\put(2476,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t}}}
+\put(2926,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t+dt}}}
+\put(3151,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}n-k}}}
+\put(2701,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}1}}}
+\put(2101,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}k-1}}}
+\put(1501,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}0}}}
+\put(1126,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}0}}}
+\end{picture}
+\begin{equation}
+P((X_{(1)}>s) \cap (t<X_{(k)}\leq t+\Delta t)) = {{n}\choose{0,
+k-1, 1, n-k}} (\frac{t-s}{a})^{k-1} \cdot \frac{\Delta t}{a} \cdot
+\frac{(a-t-\Delta t)^{n-k}}{a^{n-k}} +{\cal O} (\Delta t^2)
+\end{equation}
+
+Denominator:
+
+\setlength{\unitlength}{3947sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(2566,435)(1118,-1711)
+\thinlines
+\put(1163,-1486){\circle{74}}
+\put(3638,-1486){\circle{76}}
+\put(2851,-1486){\circle{76}}
+\put(2026,-1486){\circle{76}}
+\put(1201,-1486){\line( 1, 0){2400}}
+\put(3601,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}a}}}
+\put(3151,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}n-k}}}
+\put(1126,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}0}}}
+\put(1501,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}k-1}}}
+\put(2401,-1411){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}1}}}
+\put(2701,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t+dt}}}
+\put(2026,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t}}}
+\end{picture}
+\begin{equation}
+P(t<X_{(k)}\leq t+\Delta t)= {{n}\choose{k-1, 1, n-k}}
+(\frac{t}{a})^{k-1} \cdot \frac{\Delta t}{a} \cdot
+(\frac{(a-t-\Delta t)}{a})^{n-k} +{\cal O} (\Delta t^2)
+\end{equation}
+
+Then 
+\begin{eqnarray*}
+P(X_{(1)}>s | t< X_{(k)}\leq t+\Delta t)&=& \frac{(t-s)^{k-1}
++{\cal O}
+(\Delta t)}{t^{k-1}} +{\cal O} (\Delta t)\\ 
+P(X_{(1)} >s | X_{(k)}=t)&=&\lim_{\Delta t \rightarrow 0}P(X_{(1)}>s | t<
+X_(k)\leq t+\Delta t)= (\frac{t-s}{t})^{k-1}
+\end{eqnarray*}
+
+Now lets do this with feeling. 
+Left for VLAD to write with a lot of feeling :-)
+I did not understand a word that Rota said at this point....
+
+\setlength{\unitlength}{3947sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(2566,270)(1118,-1711)
+\thinlines
+\put(1163,-1486){\circle{74}}
+\put(3638,-1486){\circle{76}}
+\put(2251,-1486){\circle{76}}
+\put(1201,-1486){\line( 1, 0){2400}}
+\put(3601,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}a}}}
+\put(1126,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}0}}}
+\put(2026,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}X\_\{k\}=t}}}
+\end{picture}
+
+
+\begin{equation}
+P(A|Y=t)= \lim_{\Delta t \rightarrow 0} \frac{P(A \cap t < Y\leq t+
+\Delta t)}{P(t< Y \leq t+ \Delta t)}
+\end{equation}
+
+We want to discuss the continuous form of the most important law in
+probability which is the law of alternatives.
+
+\noindent {\bf Continuous Analog of Law of Alternatives}:
+
+Recall: $\Pi =$ partition of $\Omega$.
+\begin{eqnarray*}
+P(A)&=& \sum_{B\epsilon \Pi} P(A|B)P(B) \\
+P(A|Y=t) &\propto& P(A | t < Y \leq t+ \Delta t)
+\end{eqnarray*}
+
+Take the whole line and split it into intervals which will later will
+be made little.
+ 
+\setlength{\unitlength}{3947sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(3474,270)(664,-1711)
+\thinlines
+\put(2101,-1486){\circle{76}}
+\put(976,-1486){\circle{74}}
+\put(1576,-1486){\circle{76}}
+\put(3826,-1486){\circle{76}}
+\put(3226,-1486){\circle{76}}
+\put(2701,-1486){\circle{76}}
+\put(676,-1486){\line( 1, 0){3450}}
+\put(1351,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t\_-1}}}
+\put(1951,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t\_0}}}
+\put(2551,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t\_1}}}
+\put(3076,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t\_2}}}
+\put(3676,-1711){\makebox(0,0)[lb]{\smash{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}t\_3}}}
+\end{picture}
+\begin{eqnarray*}
+t_{i+1} &=& t_i + \Delta t_i \\
+(t_i < Y \leq t_{i+1}) &=& \{w: t_i < Y(w) \leq t_{i+1}\} \subseteq \Omega
+\end{eqnarray*}
+Events $(t_i < Y \leq t_{i+1})$ are a partition of the sample
+space. Therefore we can apply the classical law of alternatives as
+previously obtained. 
+\begin{eqnarray*}
+P(A) &=& \sum_{i} P(A | t_i < Y \leq t_{i+1})P(t_i < Y \leq t_{i+1}) \\
+dens(Y=t)&=&f(t) \\
+P(t_i < Y \leq t_{i+1}) &=& \int_{t_i}^{t_{i+1}} f(s)ds
+\end{eqnarray*}
+
+By the mean value theorem of integral calculus we have
+\begin{equation}
+P(T_i < Y \leq t_{i+1}) = (t_{i+1}-t_{i})f(\bar{t_i})
+\end{equation}
+Therefore, 
+\begin{equation}
+P(A) = \sum_{i} P(A | t_i < Y \leq t_{i+1}) (t_{i+1}-t_i)f(\bar{t_i})
+\end{equation}
+In the limit, as all $t_{i+1}-t_i \rightarrow 0$ this becomes
+\begin{equation}
+P(A)= \int_{-\infty}^{\infty} P(A|Y=t)f(t)dt
+\end{equation}
+
+\noindent {\bf Example: Gaps in the Dirichlet Process}:
+\begin{eqnarray*}
+P(L_2 >t) &=& \int_{s=0}^{a-t} P(L_2>t| L_1 =s) \cdot dens(L_1=s)ds \\
+dens(L_1=t) &=& dens(X_{(1)}=t) = \tder{}{t} P(X_1 \leq t) = \tder{}{t}(1-
+\frac{(a-t)^n}{a^n}) \\
+dens(L_1 =t) &=& \frac{n (a-t)^{n-1}}{a^n} \\
+dens(L_2>t | L_1=s) &=& \frac{(n-a)(a-s-t)^{n-2}}{(a-s)^{n-1}} \\
+P(L_2>t | L_1=s) &=& \frac{(a-s-t)^{n-1}}{(a-s)^{n-1}} \\
+P(L_2 \leq t) &=& \int P(L_2 \leq t | L_1 =s) \cdot dens(L_1 =s) ds \\
+dens(L_2=t) &=& \int dens(L_2=t | L_1=s) \cdot dens(L_1) ds \\
+P(L_2>t) &=& \int_{s=0}^{a-t_1} \frac{(a-s-t)^{n-1}}{(a-s)^{n-1}} \cdot
+n \cdot \frac{(a-s)^{n-1}}{a^n} ds \\
+&=& n \cdot \int_{s=0}^{a-t_1} \frac{(a-s-t)^{n-1}}{a^n} ds =
+-\left. \frac{(a-s-t)^n}{a^n}\right|^{s=0}_{s=a-t}\\
+&=& \frac{(a-t)^n}{a^n}
+\end{eqnarray*}
+So we have a proven that the gaps are identically distributed as we
+previously has assumed.
+
+
+
+
+
+
+
+

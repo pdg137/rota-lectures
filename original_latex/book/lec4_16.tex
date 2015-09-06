@@ -1,0 +1,43 @@
+{\Large 18.313, Lecture 25, Wednesday, April 16, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\\
+Transcribed by Carla M. Pellicano (carpem@mit.edu)\\
+
+\noindent {\bf Memorylessness}:\\
+
+\noindent (from last time)  We define random variables $X\geq 0$ and $Y\geq 0$, with densities $f(t)$ and  $g(t)$, respectively.  If $X$ and $Y$ are independent, then 
+$$dens(X+Y=t)=\int_0^t f(s)g(t-s)ds$$
+which we have seen in theory of Laplace Transformations.  We'll use examples of coin tossing and its variations to examine further.\\\\
+\noindent{\bf Bernoulli Process}\\\\
+We'll use a Bernoulli Process, with bias $p$.  Let's review our definition of sample space in more detail.  It is the same as a sequence of independent and identically distributed random variables $X_1,X_2,...X_n$ with the probability $P(X_n=1)=p$ and $P(X_n=0)=q$.  This is the Bernoulli Process.  However, we don't even need to talk of the sample space.  There is another way to define the Bernoulli Process in terms of waiting times.\\\\
+\noindent So, we could have started instead, with gaps $T_1,T_2,...T_n$.  Theseare the gaps or waiting time between sucessive heads.  We know that $P(T_1>n)=q^n$.  From now on, we'll use $W_1$ instead of $T_1$.  \\\\
+\noindent\underline{Example}:  Roulette\\\\
+A woman thinks that the probability of the marble landing on a certain number becomes greater if the marble hasn't landed on that number in a while.  Let's compute.
+$$P(W_1>n+k|W_1>n)=\frac{P((W_1>n+k)\cap(W_1>n))}{P(W_1>n)}$$
+$$=\frac{P(W_1>n+k)}{P(W_1>n)}=\frac{q^{n+k}}{q^n}=q^n=P(W_1>k)$$
+In other words, the roulette wheel knows nothing and remembers nothing.  Now we want to do the continuous analog.  This can only be done with the $T's$, not the $X's$.\\\\
+\noindent (small digression)\\\\
+\noindent{\bf Cauchy's Functional Equation}:  $f(x+y)=f(x)+f(y)$\\\\
+All $f$ of this form, must if they are continuous, be of the form $f(x)=e^{cx}$.  \\\\
+\noindent\underline{Proof 1}  Let $f(1)=c$.  Then $f\left(\frac{1}{n}\right)=c^\frac{1}{n}$, because 
+$$\underbrace{f\left(\frac{1}{n}\right)f\left(\frac{1}{n}\right)...f\left(\frac{1}{n}\right)}_{\mbox{n times}}=f\left(\frac{1}{n}+...+\frac{1}{n}\right)=f(1)$$
+$$f\left(\frac{k}{n}\right)=c^\frac{k}{n}$$
+but every real number is a limit of irrational numbers, $f(x)=c^x=e^{dx}$.\\\\
+\noindent\underline{Proof 2}  $f\prime(x+y)=f\prime(x)f(y)=f(x)f\prime(y)$.
+$$\frac{f\prime(x)}{f(x)}=\frac{f\prime(y)}{f(y)}=c\;\;\;\;\mbox{solving this equation, we get $e^{cx}$}$$.\\\\
+\noindent{\bf Continuous Memorylessness}\\\\
+Let $T\geq 0$, then $P(T>t+s|T>s)=P(T>t)$.  
+$$P(T>t+s|T>s)=\frac{P((T>t+s)\cap(T>s))}{P(T>s)}=P(T>t)$$
+$$\frac{P(T>t+s)}{P(T>s)}=P(T>t)\;\;\;\mbox{which is the same as saying}$$
+$$P(T>t+s)=P(T>t)P(t>s)$$
+Let's say that $P(T>t)=f(t)$ and $f(t+s)=f(t)f(s)$.  Then,
+$$f(t)=e^{ct}=e^{- \alpha t}\;\;\;\mbox{where $\alpha$ is the intensity}$$
+Thus, a memoryless waiting time, $T$, must have the cumulative distribution, $P(T\leq t)=1-e^{- \alpha t}$, and the density, $dens(T=t)=\alpha e^{- \alpha t}$.  This is called the exponential distribution.  The only memorlyless waiting times are exponentials and vice versa.  What is the waiting time for which we are looking?  The gaps between successive waiting times are independent random variables.  We can calculate the waiting time for the second, whatever it is.
+$T_1$ and $T_2$ are independent, identically distributed, and exponentially distributed random variables.  
+$$dens(T_i=t)=\alpha e^{-\alpha t},\;\;\mbox{for $t>0$}$$
+$$dens(T_1+T_2=t)=\int_0^t\!\! dens(T_1=s)dens(T_2=t-s)ds$$
+$$=\int_0^t\!\!\alpha e^{-\alpha s}\alpha e^{-\alpha (t-s)}ds$$
+$$={\alpha}^2 e^{-\alpha t}\int_0^t\!\!\!ds={\alpha}^2te^{-\alpha t}$$
+Currente calamo...going on and on...
+$$dens(T_1+T_2+...+T_n=k)=\frac{{\alpha}^n t^{n-1}}{(n-1)!}e^{-\alpha t}$$
+This is the Gamma Distribution.  The waiting time for the $n^{th}$ whatever can be calculated.  You can check that this integrates to one, because it is the integral of a density.  It must always be one, even when $n$ is not an integer.  This is the continuous analog of the Bernoulli Process, leading us up to the Poisson Process.
+

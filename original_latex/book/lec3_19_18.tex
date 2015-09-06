@@ -1,0 +1,547 @@
+\noindent {\Large 18.313, Lecture 16, Friday, March 19, 1999}\newline
+\noindent {\large Lecture by Prof. Sara Billey (sara@math.mit.edu)}\newline
+\noindent Transcribed by Raj Iyer (rajiyer@mit.edu)\newline
+\medskip
+
+\noindent Today we will cover:
+\begin{enumerate}
+\nolineskips
+  \item 
+Distributions and Density Functions
+  \item
+The Uniform Process
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Distributions and density functions}
+
+A {\em random variable} $X$ is a function
+$X\!\!:\Omega\rightarrow \reals$ over some sample space $\Omega$.
+(Note that our random variable no longer maps to the integers.)
+We say $X$ is a {\em continuous} random variable if 
+$P(X\leq t)$ is a continuous function which is piecewise
+differentiable.  
+This means that $P(X\leq t)$ can have undifferentiable kinks (like the
+absolute value function has at 0), but not discontinuous steps.  
+
+We say
+$P(X\leq t)$, also written $F(t)$, is the {\em cumulative distribution
+function} (cdf) of $X$. 
+
+What do the events underlying the continuous random variable $X$ look like? 
+They look like unions (finite or countable) of intervals, for example, 
+\[
+(a < X \leq b).
+\]
+Note that, unlike integer random variables, the event $(X=a)$ is an
+event which as probability zero (for all $a\in\reals$).
+
+Since we specified that $F(t)$ is piecewise differentiable, you probably
+guessed that we're going to differentiate it.  Its derivative is the
+{\em density function} of $X$:
+\[
+  \diff{}{t}P(X\leq t) = \diff{}{t} F(t) = \dens(X=t).
+\]
+
+Now that we've seen the formal definitions, let's get some intuition
+about distributions and densities by looking at some examples.
+
+\medskip
+
+\noindent{\bf Example 1: Uniform Distribution}
+
+\medskip
+
+$X$ is {\em uniformly distributed} between $[0,a]$ means
+\[
+  F(t) =
+	 \left\{ 
+	   \begin{array}{ll}
+		0 & t<0 \\
+		t/a & 0\leq t\leq a\\
+		1 & t>a
+	   \end{array}
+	 \right. 
+\]
+and therefore
+\[
+\diff{}{t}F(t) = 
+	 \left\{ 
+	   \begin{array}{ll}
+		1/a & 0\leq t\leq a\\
+		0 & \mbox{otherwise.}
+	   \end{array}
+	 \right. 
+\]
+Note:  on the next quiz, don't forget the ``0 otherwise.''  
+
+How can we generate such a distribution?  
+\begin{itemize}
+\nolineskips
+  \item
+We could spin a mounted spinner with range $[0,a]$ and select the number
+that it comes to rest on.
+  \item
+What about on a computer?  
+No way, because we can only generate rational numbers (because a computer has
+limited precision, meaning it can only store a finite number of digits).
+\end{itemize}
+
+Note that 
+in general, ``Y is chosen uniformly on the set'' means the density is
+constant,
+\[
+  \dens(Y=s) = 
+	 \left\{ 
+	   \begin{array}{ll}
+		1/c & \mbox{$s\in$ set}  \\
+		0 & \mbox{otherwise.}
+	   \end{array}
+	 \right. 
+\]
+Also, note
+\[
+  \int_{-\infty}^{\infty} \dens(Y=s) = 1.
+\]
+What is $c$?  It is a normalization constant (set so the above integral
+will equal 1). 
+For example, if we are dropping points on a rectangle with side lengths $a$
+and $b$, then $c = ab$.
+\QED
+
+\medskip
+
+\noindent{\bf Example 2: Exponential Distribution}
+
+\medskip
+
+We say $X$ is {\em exponentially distributed} if
+\[
+  \dens(X=s) = 
+	 \left\{ 
+	   \begin{array}{ll}
+		\frac{1}{\theta} e^{-s/\theta} & 0\leq s<\infty \\
+		0 & \mbox{otherwise.}
+	   \end{array}
+	 \right. 
+\]
+This represents waiting time.  
+For example, I watch a lot of {\em The X Files}.  If you're like me, then
+you know that 
+the waiting time for the next UFO sighting is more likely to be sooner
+than later.
+This is reflected in the cdf
+\[
+  P(X\leq t) = \int_0^t \frac{1}{\theta} e^{-s/\theta}\ ds 
+		= 1 - e^{-t/\theta}, 
+\]
+which decays exponentially as $t$ (time) increases.
+\QED
+
+\medskip
+
+\noindent{\bf Example 3: 18.313 Distribution}
+
+\medskip
+
+You can make up any density you like.  Suppose I say
+that $X$ has the 18.313
+distribution (Figure~\ref{fig:18.313}(a)): 
+\[
+  \dens(X=s) = \frac{1}{c}
+	 \left\{ 
+	   \begin{array}{ll}
+		1 & 0\leq s\leq 1  \\
+		8 & 1 < s \leq 2  \\
+		3 & 2 < s \leq 3  \\
+		1 & 3 < s \leq 4 \\
+		3 & 4 < s \leq 5 \\
+		0 & \mbox{otherwise.}
+	   \end{array}
+	 \right. 
+\]
+Note that the normalization constant $c$ is $16=1+8+3+1+3$.
+
+%% FIGURE
+\begin{figure}
+\begin{center}
+\mbox{\psfig{figure=l18_18.313.ps,height=150pt}}
+\end{center}
+\caption{{\bf (a)} The 18.313 density. 
+         {\bf (b)} Generating data according to the 18.313 cdf.}
+\label{fig:18.313}
+\end{figure}
+%% FIGURE
+
+\medskip
+
+\noindent {\em Question:} Why does the integral of the density always
+equal 1? 
+
+\noindent {\em Answer:} Because $\Pr{\mbox{sample space}} = 1$.  You
+should check that the 18.313 density gives a valid cdf. 
+\QED
+
+\medskip
+
+In general, you may know that the distribution has a certain form, but
+you will need to approximate the parameters (for example, $\theta$ in
+the exponential distribution).
+
+\medskip
+
+\noindent {\em Question:} 
+How can I use a computer to generate data according to given
+distribution, for example, the 18.313
+distribution?
+
+\noindent {\em Answer:}
+Start at a point (chosen uniformly at random) on the $y$-axis,
+``backtrack'' 
+to the graph of the distribution, and then project down to the $x$-axis
+(as shown in Figure~\ref{fig:18.313}(b)).
+(This process is reminiscent of the Lebesgue integral).
+
+\medskip
+
+\noindent {\em Question:} 
+How do you find a distribution or density of given data?
+
+\noindent {\em Answer:}
+The natural thing to do is to draw a histogram. 
+For example, I have my UFO waiting time data, which I can plot as a
+histogram (Figure~\ref{fig:ufo}(a)). 
+
+%% FIGURE
+\begin{figure}
+\begin{center}
+\mbox{\psfig{figure=l18_ufo_hist.ps,height=150pt}}
+\end{center}
+\caption{{\bf (a)} Histogram of number of days before next UFO sighting.
+         {\bf (b)} Histogram approximated by an exponential density function.}
+\label{fig:ufo}
+\end{figure}
+%% FIGURE
+
+Once I accumlate a lot of data, I can try to fit a curve to it.  
+What kind of curve do I get?
+In this case I get an exponential distribution (Figure~\ref{fig:ufo}(b)).  
+
+This picture indicates a general phenomenon:  {\em A density function is
+the limiting case of a histogram.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Uniform Process}
+
+Suppose we drop $n$ markers, independently and uniformly at random, on
+the interval $[0,a]$.
+Let the random variable 
+$X_i$ be the point on which the $i$th marker falls $(1\leq i\leq n)$.
+This defines the {\em uniform process,} also called the 
+{\em Dirichlet} (DEER-uh-shlay) {\em Process.}
+Using $X_1,\ldots,X_n$ we define another set of random variables called {\em
+order-statistics}: 
+\begin{eqnarray*}
+  X_{(1)} & = & \min\{X_1,X_2,\ldots,X_n\} \\
+  X_{(2)} & = & \min(\{X_1,X_2,\ldots,X_n\} - \{X_{(1)}\})\\
+  \vdots & & \\
+  X_{(n)} & = & \max\{X_1,X_2,\ldots,X_n\} 
+\end{eqnarray*}
+Simply put, the $k$th order statistic $X_{(k)}$ is the $k$th smallest
+element among $X_1,\ldots,X_n$ (see Figure~\ref{fig:uniform}). 
+
+%% FIGURE
+\begin{figure}
+\begin{center}
+\mbox{\psfig{figure=l18_uniform.ps,height=60pt}}
+\end{center}
+\caption{The uniform process. $X_i$ is the $i$th point dropped, $X_{(k)}$
+is the $k$th order statistic.}
+\label{fig:uniform}
+\end{figure}
+%% FIGURE
+
+\medskip
+
+\noindent {\em Question:} 
+What is $P(X_{(k)} \leq t)$?
+
+\noindent {\em Answer:}
+We saw last Friday (Lecture~16, 3/12/99), that 
+\begin{equation}
+  P(X_{(1)}\leq t) = 1 - \paren{\frac{a-t}{a}}^n.
+\label{eq:uniform_cdf1}
+\end{equation}
+This is because the probability that the smallest point lands before or
+on $t$ is
+equal to one minus the probability that the smallest point lands after
+$t$, which means that {\em all} the points land after $t$.
+The probability that a point falls in the range $(t,a]$ is $(a-t)/a$,
+and since the points are selected independently, we multiply their
+probabilities, giving the result.
+
+Now then, on to $P(X_{(k)}\leq t)$.  Let's visualize the event
+$(X_{(k)}\leq t)$.
+This means that $j\geq k$ points fell in the interval $[0,t]$ and the
+remaining $n-j$ points fell in the interval $(t,a]$: 
+%%% FIGURE 
+\begin{center}
+\mbox{\psfig{figure=l18_ucdf.ps,height=60pt}}
+\end{center}
+%%% FIGURE 
+What is the probability that exactly $j$ points fall in $[0,t]$?
+This is the number of ways of choosing the $j$ points, times the
+probability that each of the $j$ fall in $[0,t]$, times the probability
+that the remaining $n-j$ points fall in $(t,a]$:
+\[
+  P(\mbox{exactly $j$ points fall in $[0,t]$}) =
+  {n\choose j}\paren{\frac{t}{a}}^j\paren{\frac{a-t}{a}}^{n-j}.
+\]
+Thus,
+\begin{equation}
+   P(X_{(k)}\leq t) = \sum_{j=k}^n
+	  {n\choose j}\paren{\frac{t}{a}}^j\paren{\frac{a-t}{a}}^{n-j}.
+\label{eq:uniform_cdfk}
+\end{equation}
+Note that this agrees with our calculation~(\ref{eq:uniform_cdf1}) for
+$k=1$. 
+\QED
+
+\medskip
+
+\noindent {\em Question:} 
+Now that we've computed the cdf, what is the density 
+$\dens(X_{(k)} = t)$ equal to?
+
+\noindent {\em Answer:}
+We just need to differentiate the cdf~(\ref{eq:uniform_cdfk}).  
+The cdf is a polynomial, so we can differentiate it in
+principle.
+However, I recommend that we calculate the derivate directly from the
+limit definition:
+\[
+  \diff{}{x}f(x) = \lim_{h\rightarrow 0} \frac{f(x+h)-f(x)}{h}.
+\]
+So,
+\begin{eqnarray}
+\dens(X_{(k)} = t) 
+& = &
+\lim_{h\rightarrow 0} \frac{P(X_{(k)}\leq t+h)-P(X_{(k)}\leq t)}{h}
+  \nonumber \\  
+& = &
+\lim_{h\rightarrow 0} \frac{P(t< X_{(k)}\leq t+h)}{h}.  
+\label{eq:derivative}
+\end{eqnarray}
+
+What does it mean for the event $(t< X_{(k)}\leq t+h)$ to occur?
+It means that the $k$th smallest point fell in the range $(t,t+h]$,
+certainly.  
+However, other points might have fallen in this range as well,  
+for example $X_{(k-1)}$ and $X_{(k+1)}$.
+We can express $(t< X_{(k)}\leq t+h)$ as the disjoint union of events:
+\[
+  (\mbox{exactly 1 point falls in $(t,t+h]$}) \cup 
+%%  (\mbox{exactly 2 points fall in $(t,t+h]$}) \cup 
+  \cdots \cup
+  (\mbox{exactly $n$ points fall in $(t,t+h]$}),
+\]
+where it is understood that $X_{(k)}$ is one of the points that falls in
+$(t,t+h]$.
+Let $p_j$ be the probability that exactly $j$ points fall in $(t,t+h]$: 
+%%% FIGURE 
+\begin{center}
+\mbox{\psfig{figure=l18_udens.ps,height=60pt}}
+\end{center}
+%%% FIGURE 
+We consider two cases:  
+when only $X_{(k)}$ falls in $(t,t+h]$ ($j=1$), and when other
+points also fall in $(t,t+h]$ ($j\geq 2$). 
+
+When only $X_{(k)}$ falls in $(t,t+h]$, then $k-1$ points
+fall in the range $[0,t)$ and $n-k$ points fall in $(t+h,a]$.
+The probability of each of these occurring times the number of
+ways of choosing which $k-1$ fall in $[0,t)$ gives the
+desired probability: 
+\begin{equation}
+  p_1 = 
+	{n\choose k-1,1,n-k}\paren{\frac{t}{a}}^{k-1}
+			\paren{\frac{h}{a}}
+			\paren{\frac{a-(t+h)}{a}}^{n-k}
+\label{eq:p1}
+\end{equation}
+
+Now, what happens when other points besides $X_{(k)}$ fall in
+$(t,t+h]$, meaning $j\geq 2$?
+Then the probability $p_j$ we compute will differ from~(\ref{eq:p1}) 
+in a few ways, one of which being that the $(h/a)$ term will become 
+$(h/a)^j$.
+(Note that no other terms in $p_j$ will contain $h$).  
+Looking ahead to our derivative calculation~(\ref{eq:derivative}),
+we will be dividing $p_j$
+by $h$, which will leave a factor of $(h/a)^{j-1}$.
+So when we take the limit as $h\rightarrow 0$, $p_j$ will equal 0. 
+(Intuitively, as $h\rightarrow 0$, the interval $(t,t+h]$
+shrinks until it contains just $X_{(k)}$.) 
+
+Thus, 
+\begin{eqnarray*}
+\lim_{h\rightarrow 0} \frac{P(t< X_{(k)}\leq t+h)}{h}  
+& = &
+\lim_{h\rightarrow 0} \frac{p_1 + p_2 + \cdots + p_n}{h}  \\
+& = &
+\lim_{h\rightarrow 0} \frac{p_1}{h}  \\
+& = &
+{n\choose k-1,1,n-k}\paren{\frac{t}{a}}^{k-1}
+		\paren{\frac{1}{a}}
+		\paren{\frac{a-t}{a}}^{n-k}.
+\end{eqnarray*}
+We have calculated
+\begin{equation}
+  \dens(X_{(k)} = t) = 
+     {n-1\choose k-1,n-k}
+	\paren{\frac{t^{k-1}(a-t)^{n-k}}
+		{a^n}
+	      }~~~~~~~~~~(0\leq t\leq a)
+\label{eq:uniform_dens}
+\end{equation}
+Naturally, $\dens(X_{(k)} = t) = 0$ if $t$ is outside $[0,a]$.
+\QED  
+
+\medskip
+
+Now, let me show you a cute trick. 
+What is the integral of the density?
+\[
+  \int_0^a {n-1\choose k-1,n-k}
+	\paren{\frac{t^{k-1}(a-t)^{n-k}}{a^n}} dt\ =\ 1
+\]
+which follows from the definition of density. 
+This implies
+\[
+  \int_0^a  t^{k-1}(a-t)^{n-k} dt 
+  = 
+  \frac{a^n(k-1)!(n-k)!}{(n-1)!},
+\]
+a nonobvious identity that we get for free.  
+You could prove this directly via integration by parts, but I
+wouldn't want to.
+So when dealing with continuous random variables, we continue to furnish
+probabilistic proofs of identities, only now they involve integrals 
+instead of sums.  
+\QED
+
+\medskip
+
+Order statistics are really neat. 
+Remember the 18.313 distribution?  We can generate order statistics
+according to that distribution by using the ``backtracking'' method I
+described before (see Example~3 and Figure~\ref{fig:18.313}(b)). 
+Order statistics are also fundamental and come up everywhere:  physics,
+computer science, game theory, to name just a few places. 
+
+Now, let's see a nice example of a uniform process.
+
+\medskip
+
+\noindent{\bf Example 4: Breaking World Records}
+
+\medskip
+
+It seems like people are always breaking world records.
+Every time there's a marathon, it is announced, ``A new world's record in
+such and such has been broken!''
+So it's natural to ask, if you have a world record, how long do you
+expect to wait before it is broken?
+By the way, does anyone here have a world record in something?
+[No hands are raised.] 
+It's not implausible. 
+Last year a woman in my class had the world record for cross country
+skiing for her age group.  
+
+Let $X_1, X_2, \ldots$, be timed trials, for example race times.
+Now $X_1,X_2,\ldots,$ is an infinite
+sequence of continuous random variables, and 
+we make the simplifying assumption that they are independently and
+identically distributed (i.i.d.). 
+Let $N$ by the smallest index such that $X_N \geq X_1$, meaning that
+$X_N$ matches or breaks the record set by $X_1$.
+For example, after five trials we might have:
+%%% FIGURE 
+\begin{center}
+\mbox{\psfig{figure=l18_record.ps,height=60pt}}
+\end{center}
+%%% FIGURE 
+
+\medskip
+
+{\em Question:}
+What is $E(N)$?
+
+{\em Answer:}
+Rather than computing $P(N=n)$ directly, let's first calculate 
+$P(N>n)$.  
+Now $(N>n)$ is the event that $X_1$ is the rightmost (largest) point
+among the first $n$ trials.  
+Thus the probability is equal to the number of permutations of $n$
+elements which have $X_1$ as the rightmost point, divided by the total
+number of permutations:
+\begin{equation}
+  P(N > n) = \frac{(n-1)!}{n!} = \frac{1}{n}.
+\label{eq:N}
+\end{equation}
+Now we can compute $P(N=n):$
+\[
+  P(N=n) = P(N>n-1) - P(N>n) = \frac{1}{n-1} - \frac{1}{n} = \frac{1}{n(n-1)}.
+\]
+So, the expected trial that will break your record is
+\[
+  E(N) = \sum_{n=2}^\infty n P(N=n) = \sum_{n=2}^\infty \frac{1}{n-1} 
+	= \infty 
+\]
+since the sum is the Harmonic series which diverges. 
+
+Note that we could have computed the expection once we computed~(\ref{eq:N})
+since $N$ is an integer random variable that takes on positive values:
+\[
+  E(N) = \sum_{n=1}^\infty P(N>n) =\sum_{n=1}^\infty \frac{1}{n} = \infty.
+\]
+
+So the expected number of trials is infinite!  
+So perhaps we can conclude that if you have a world record, you can
+expect to keep it forever!
+However, how do we reconcile this with the fact that, given two seperate
+trials $X_i$ and $X_j$, $P(X_i \geq X_j) = P(X_i < X_j) = 1/2$, meaning
+the probability that you lose your record to a particular trial is
+$1/2$? 
+The answer is that the mathematical expectation does not tell us the
+whole story about a random variable.  
+
+\medskip
+
+\noindent {\bf Vacation Problem}
+
+\medskip
+
+Since tomorrow begins Spring Break, let me assign you some problems to
+work on over vacation.
+\begin{enumerate}
+  \item
+Set a world record.
+  \item
+Suppose you are choosing two points uniformly at random within a three
+dimensional box with side lengths $a,b,$ and $c$. 
+What is the expected distance between the two points?
+\end{enumerate}
+Problem~2 is worth 50 research points.  
+The one and two dimensional cases aren't too hard, but this one is a
+little tricky.
+
+\medskip
+
+Enjoy your vacation!
+
+
+
+
+
+

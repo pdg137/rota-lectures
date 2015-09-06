@@ -1,0 +1,193 @@
+{\Large 18.313 Lecture 6, Tuesday, February 16, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\newline
+Transcribed by Bilge Demirk\"oz (bilge@mit.edu)\newline
+\newline
+\noindent {\bf Random Variables} (continued):
+
+First we will give a brief summary of the previous theory. If we have
+a variable, more precisely an integer variable $X$, then $p(X=n)= p_{n}$
+where $p_{n}$ is called the probability distribution. 
+
+Given two random variables $X$ and $Y$, they have a joint distribution
+\begin{equation}
+P((x=i) \cap (y=j)) = r_{ij}\\
+\sum_{j} r_{ij} = p_{i} = P(X=i)\\ 
+\sum_{i} r_{ij} = q_{j} = P(Y=j)
+\end{equation}
+Then the expectation value is 
+\begin{equation}
+E(x)= \sum_{n} P(x=n) = \sum_{n} n p_{n}
+\end{equation}
+ 
+Note that expectation values add:
+$E(X+Y)=E(X)+E(Y)$. 
+This is very remarkable since we do not have to compute $E(X+Y)$
+directly from the definition of expectation value. Instead we can just
+add the expectation values of $X$ and $Y$.
+
+\noindent {\bf Maxwell-Boltzmann Statistics:  $ \Omega_{MK} $}
+\begin{equation}
+\theta_{i} = \mbox{occupation number of } i.
+\end{equation}
+Last time, we derived the joint distribution of all occupation
+numbers, $P((\Theta_{1} = i_{1}) \cap \ldots \cap (\Theta_{n} =
+i_{n}))$ is equal to
+\begin{equation} 
+\left\{ 
+\begin {array}{rcl}
+0 & if & i_{1}+ i_{2}+ \ldots+i_{n} \not = k\\
+\frac{1}{n^{k}} \cdot {{k} \choose i_{1}} \cdot {{k-i} \choose {i_{2}}} \cdot {{k-i_{1}-i_{2}} \choose {i_{3}}} \ldots {{k-i_{1}-i_{2}-\ldots-i_{n-2}} \choose {i_{n-1}}} & if & otherwise
+\end{array}
+\right\}
+\end{equation}
+
+We have $k$ balls and we take away $i_{1}$ and then $i_{2}$ \ldots and so on until the denominator is $i_{n-1}$ and so the multiplication of these binomial terms gives the number of sample points. Now lets simplify this result:
+
+\begin{equation}
+\frac{1}{n^{k}} \cdot \frac{k!}{i_{1}(k-i_{1})} \cdot \frac{(k-i_{1})!}{i_{2}(k-i_{1}-i_{2})} \cdot \frac{(k-i_{1}-i_{2})!}{i_{3}(k-i_{1}-i_{2}-i_{3})} \cdot \ldots
+\end{equation}
+
+Miracle! There is a cancellation so we get:
+\begin{equation}
+\frac{1}{n^{k}} \cdot \frac{k!}{i_{1}! i_{2}! \ldots i_{n}!} = \frac{1}{n^{k}} \cdot {{k} \choose {i_{1}, i_{2}, \ldots , i_{n}}}
+\end{equation}
+where ${{k} \choose {i_{1}, i_{2}, \ldots , i_{n}}}$ is called the multinomial
+coefficient.
+\begin{eqnarray*}
+P(\Theta_{1}=i) &=& \frac{1}{n^{k}} \cdot (n-1)^{k-i} \cdot
+{{k} \choose {i}} = \sum_{i_{2} \ldots i_{n}}P((\Theta_{1} = i_{1}) \cap
+(\Theta_{2}=i_{2}) \cap \ldots \cap (\Theta_{n}=i_{n})) \\
+E(\Theta_{1}) &=& \sum_{i=0}^{k} i \cdot P(\Theta_{1}=i) =
+\sum_{i=0}^{k} i \cdot {{k} \choose {i}} \cdot \frac{(n-1)^{k-i}}{n^{k}}
+\end{eqnarray*}
+
+But to get the expectation value like this is very hard. Then there
+must be an easier way of doing it. We are forced to think to get out
+of calculating this horrible thing.\\
+Then we write the probability for $\Theta_{1}$ :
+\begin{equation}
+P(\Theta_{2}=i) = \frac{1}{n^{k}} \cdot (n-1)^{k-i} \cdot
+{{k} \choose {i}}
+\end{equation}
+Then we notice that $\Theta_{1}$ and $\Theta_{2}$ are statistically
+the same but they are not the same! They are not identical since they
+are different boxes afterall. We need a new concept; we say that
+$\Theta_{1}$ and $\Theta_{2}$ are identically distributed. More
+generally, two random variables, $X$ and $Y$ are identically
+distributed when $P(X=n)=P(Y=n)$ for all integers n.
+
+If $X$ and $Y$ are identically distributed then their expectation values
+are the same, that is $E(X)=E(Y)$. Then we have $E(\Theta_{1})=
+E(\Theta_{2})= \ldots = E(\Theta_{n})$ but $\Theta_{1}+\Theta_{2}+
+\ldots +\Theta_{n}$ is a random variable and takes the value of k balls
+with probability 1. Then,
+\begin{equation}
+E(\Theta_{1}+ \Theta_{2}+ \ldots +\Theta_{n})=k= E(\Theta_{1})+
+E(\Theta_{2})+ \ldots +E(\Theta_{n})
+\end{equation}
+But all these expectation values, $E(\Theta_{1}), E(\Theta_{2})$, \ldots
+are equal. The following holds:
+\begin{eqnarray*}
+E(\Theta_{1}+ \Theta_{2}+ \ldots + \Theta_{n}) &=& n \cdot E(\Theta_{1})\\
+E(\Theta_{1}) &=& \frac{k}{n}
+\end{eqnarray*}
+We did not have to calculate the hard way! Now lets do something
+different with Maxwell-Boltzmann Statistics:
+\begin{eqnarray*}
+X_{1} &=& \mbox{position of ball } 1.\\
+P(X_{1}=i) &=& \frac{1}{n} \mbox{ where } i=1,2,3,\ldots \mbox{ since all
+the boxes are identical.}\\
+X_{2} &=& \mbox{position of ball } 2.\\
+P(X_{2}=i) &=& \frac{1}{n}\\
+\end{eqnarray*}
+Then  $X_{1}$ and $X_{2}$ are identically distributed and they are
+also independent variables. Lets check that they are indeed
+independent.
+\begin{equation}
+P((X_{1}) \cap (X_2)) = \frac{1}{n^2} = P(x_1 =i) \cdot P(x_2 =j)
+\end{equation}
+ 
+Here is a tough random variable: $N =$ number of empty boxes.
+In real life, this random variable comes up for computers, placing
+people into cubicles and so on.
+
+\noindent {\bf Example 5 :} The Bernoulli Process
+
+We toss a biased coin with a bias $p$, infinitely many times. 
+\begin{eqnarray*}
+\Omega &=& \mbox{all } \infty \mbox{ sequences of } 0 \mbox{'s and } 1 \mbox{'s.} \\
+T_1 &=& \mbox{waiting time for the first head.} \\
+P(T_1=n) &=& ? \\
+\end{eqnarray*} 
+We have to have all tails as the first $n-1$ outcomes. Then it will
+look like: 
+\begin{equation}
+\left\{ ( 0, 0, 0, \ldots 0, 1, w_{n+1}, w_{n+2}, \ldots) \right\}
+\end{equation}
+We have $n-1$ $0$'s before we have a $1$. Then we have 
+\begin{equation}
+P(T_1=n)= q^{n-1} \cdot p
+\end{equation}
+Now observe two facts:
+\begin{itemize}{}{\setlength{\itemsep}{-2ex}}
+\item As expected, $ \sum_{n>0}  q^{n-1} \cdot p =1 $ . This is
+automatically so but 
+\begin{equation}
+\sum_{n>0}  q^{n-1} = 1+ q+q^2+ \ldots = \frac{1}{1-q} = \frac{1}{p}
+\end{equation}
+Of course we do not need to do this since we already know that the sum
+of all probability distibutions has to equal 1.
+\item But there is a kinkyness about this random variable since $T_1$
+is not defined on $w=(0, 0, 0, \ldots)$ but $P(w)=0$. 
+\end{itemize}
+Lets look at another example:
+\begin{eqnarray*}
+T_2 = \mbox{gap between the first and the second head.} \\
+P(T_1=k) \cap P(T_2=n)= ?
+\end{eqnarray*} 
+The second head must occur at the $k+n^{th}$ event since it looks like
+this:
+\begin{equation}
+\left\{ ( 0, 0, 0, \ldots 0, 1, 0, 0, \ldots 1,  w_{n+k+1}, w_{n+k+2}, \ldots) \right\}
+\end{equation}
+Then we will have:
+\begin{equation}
+P(T_1=k) \cap P(T_2=n)= q^{k-1} \cdot p \cdot q^{n-1} \cdot p  
+\end{equation}
+
+Going back to calculate $T_2$, we find:
+\begin{equation}
+(T_2 =n)=(\cup_{k}(T_1=k))\cap(T_2=n)= \cup_{k}((T_1=k)\cap(T_2+n))
+\end{equation}
+from the distributive law. It is a union of disjoint events so we get:
+\begin{equation}
+\sum_{k}P(T_1=k) \cap P(T_2=n)=\sum_{k}q^{k-1} \cdot p \cdot q^{n-1}
+\cdot p = q^{n-1} \cdot p
+\end{equation}
+since $ q^{k-1} \cdot p = 1$. Then $T_1$ and $T_2$ are independent
+variables. We should have known this earlier  since the coin does not
+know whether it is at the beginning of a run or somewhere else. Still,
+it was not intuitively obvious.
+Lets look at another example:
+\begin{equation}
+X_{n}= \mbox{outcome of the $n^{th}$ toss} = \left\{
+ \begin {array}{rcl}
+1 & \mbox{with probability } p\\
+0 & \mbox{with probability } q \end{array} \right\}
+\end{equation}
+The random variables $X_1$, $X_2$, $X_3$,\ldots are independent and
+are identically distributed. Now it is too easy. Lets toughen it up a
+little bit. Let $S_n$ be the number of heads in the first $n$ tosses
+then we have,
+\begin{eqnarray}
+X_1 + X_2 + \ldots +X_n &=& S_n\\
+P(S_n=k)&=& {{n} \choose {k}} \cdot p^k \cdot q^{n-k}
+\end{eqnarray} 
+from the binomial distribution.
+\begin{equation}
+\sum_{k=0}^{n}P(S_n=k)= 1 = \sum_{k=0}^{n}{{n} \choose {k}} \cdot
+p^k \cdot q^{n-1} = (p+q)^{n}
+\end{equation}
+And so we have proved the binomial theorem for the second time. 
+What about $E(S_n)$? We will do that next time, using a trick.
+

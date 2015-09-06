@@ -1,0 +1,120 @@
+\noindent {\Large 18.313, Lecture 17, Monday, March 29, 1999}\newline
+\noindent {\large Lecture by Prof. Gian Carlo Rota}\newline
+\noindent Transcribed by Luis A. Benitez (luisb@mit.edu)\newline
+
+\noindent {\bf The Dirichlet (uniform) Process} (continued):
+
+Suppose we have a continuous set of boxes in the interval of $[0,a]$, and you
+drop $n$ balls into these boxes inside.  That is, we are putting {\em discrete}
+balls into continuous boxes.  Define the random variables $X_1, X_2, ... X_n$ which are independent and identically distributed (i.e.  {\em i.i.d.}),
+uniformly distributed over the interval
+$P(c < X_i \leq d) = \frac {d -c} {a} = \frac {1} {a} \int_{c}^{d} dt$
+
+Let us do a number of thought significant experiments \ldots
+
+Define the random variable $U(t), 0 < t \leq a$.  $U(t)=k$ if exactly 
+$k$ of $X_1, X_2, ..., X_n$ lie in $[0,t]$.  Hence, the probability distribution can be computed as:
+\begin{eqnarray*}
+P(U(t) = k) = {n\choose k} \left( \frac {t} {a} \right)^k \left( \frac {a-t} {a} \right )^{n-k}
+\end{eqnarray*}
+
+An important remark is to be made here:
+$U(t)$ is a random variable for each $t$.  Such a family of random variables
+parametrized by $t$ is called a {\em Random Function}.
+
+$P((U(t_1)=i) \cap (U(t_2)=j)) = ?,  o \leq t_1 < t_2 \leq a$
+
+The joint distribution is just equal to 0 if $ j < i$, obviously.  
+Otherwise, we can use the balls into boxes method and imagine 3 boxes: $[0,t_1] , [t_1,t_2], [t_2,a]$, thus we can intuitively
+calculate the joint distribution of those by:
+
+\begin{displaymath}
+{{n}\choose{i, j-i, n-j}}\left( \frac {t_1} {a} \right)^i \left( \frac {t_2 - t_1} {a} \right)^{j-i} \left( \frac {a - t_2} {a} \right)^{n-j}
+\end{displaymath}
+
+Let us now toughen the problem a little bit.  Now, we would have $n$ intervals going from $[0,a]$.  The interval is thus divided into boxes that range from $[0,t_1], [t_1, t_2], ... ,[t_{n-1}, a]$ and each interval gets exactly one ball.  The joint distribution for the event is then:
+\begin{displaymath}
+P((U(t_1)=1) \cap \ldots (U(t_{n-1} = n-1)))
+={{n}\choose{1,1,1, \ldots ,1}}\left( \frac {t_1} {a} \right) \left( \frac {t_2 - t_1} {a} \right) \cdots \left( \frac {a - t_{n-1}} {a} \right)
+\end{displaymath}
+
+As you can note the choose term becomes $n!$.  Other problems have computations
+similar to the ones we have just carried out.
+
+{\em Order Statistics}
+
+For starters, define $X_{(k)}$ to be read as ``X order k''.
+
+$X_{(1)} = min$\\
+$X_{(2)}=next$\\
+\vdots \\
+$X_{(n)}=max$
+
+We are interested in knowing the cumulative distribution of the following:
+
+$P(X_{(k)} \leq t) = ?$
+$(X_{(k)} \leq t ) = (U(t) = k) \cup (U(t) = k + 1) \cup \ldots (U(t) = n)$
+
+The latter is a union of disjoint events, therefore we can express it as just the sum:
+
+\begin{displaymath}
+P(X_{(k)} \leq t) ={{n}\choose{k}}\left( \frac {t} {a} \right)^k \left( \frac {a-t} {a} \right)^{n-k} +  {{n}\choose{k+1}} \left( \frac {t} {a} \right)^{k+1} \left( \frac {a-t} {a} \right)^{n-k-1} + \ldots + {{n}\choose{k}} \left( \frac {t} {a} \right)^n
+\end{displaymath}
+
+\begin{displaymath}
+dens(X_{(k)} = t ) = \frac {d} {dt} P(X_{(k)} \leq t) = {n\choose k} \frac {kt^{k-1}(a-t)^{n-k}} {a^n} + 0
+\end{displaymath}
+
+The last term is zero because they cancel out.
+\begin{displaymath}
+\int_{0}^{a} {{n}\choose {k}}\frac {kt^{k-1} (a-t)^{n-k}} {a^n} dt = 1
+\end{displaymath}
+
+or
+
+\begin{displaymath}
+\int_{0}^{a} t^{k-1} (a-t)^{n-k} dt = \frac {a^n} {k {n\choose k}}
+\end{displaymath}
+
+The next question to consider is the length of the gaps between 2 succesive placements.  Imagine a circle with circumference $a$.  We can do a Dirichlet process with $n+1$ points, by dropping those $n+1$ points to get $n+1$ gaps.  The gaps are identically distributed (i.e., i.d.) since the points are completely random.  The gaps don't know which one they are are.  The gaps are even exchangeable.
+
+By opening the circle and making it a line of length $a$, the gaps continue being identically distributed and exchangeable.
+
+Define the random variables $L_1, L_2, \ldots L_{n+1}$.  Then:
+\begin{displaymath}
+P(L_1 \leq t) = P(X_{(1)} \leq t) =  1- \frac {n(a-t)^n} {a^n}
+\end{displaymath}
+\begin{displaymath}
+dens(L_1 =t ) = \frac {n(a-t)^{n-1}} {a^n}
+\end{displaymath}
+\begin{displaymath}
+dens(L_i = t) = same
+\end{displaymath}
+We know from before that when $X$ is a random variable with $dens(X=t) =f(t)$, then $E(X) = \int_{-\infty}^{\infty} tf(t)dt$
+\begin{displaymath}
+E(L_i) = ? \end{displaymath}
+\begin{displaymath}
+E(L_1) + E(L_2) + \ldots + E(L_{n+1}) = E(L_1 + L_2 + \ldots + L_{n+1}) = a\end{displaymath}
+\begin{displaymath}
+E(L_1) = \frac {a} {n+1}
+\end{displaymath}
+By the same token we have:
+\begin{displaymath}
+X_{(2)} = L_1 + L_2
+\end{displaymath}
+\begin{displaymath}
+E(X_{(2)}) = E(L_1) + E(L_2) = \frac {2a} {n+1}
+\end{displaymath}
+We could use here the density definition but here we get a marvelous identity.
+More generally,
+\begin{displaymath}
+dens(X_{(k)} = t) = {n\choose k}\frac {kt^{k-1}(a-t)^{n-k}} {a^n}
+\end{displaymath}
+\begin{displaymath}
+\int_{0}^{a} dens(X_{(k)} = t)t dt = E(X_{(k)}) = \frac {ka} {n+1}
+\end{displaymath}
+\begin{displaymath}
+\int_{0}^{a} {n\choose k}\frac {kt^k(a-t)^{n-k}} {a^n} dt = \frac {ka} {n+1}
+\end{displaymath}
+an astounding result since it doesn't depend on $t$.!!
+

@@ -1,0 +1,114 @@
+{\Large 18.313 Lecture 21, Wednesday, April 7, 1999}\newline 
+{\large Lecture by Prof. Gian-Carlo Rota}\newline 
+Transcribed by Wei-An Yu (way@mit.edu) and David Wang (d\_wang@mit.edu)\\
+
+\section{The Continuous Law of Alternatives (cont'd.)}
+Recall that:
+\begin{eqnarray*}
+P(A) = \int_{- \infty}^{\infty} P(A \mid X = t) dens(X = t) dt
+\end{eqnarray*}
+
+For example, when we allow $A$ to be the event $(Y \leq s)$, we get:
+\begin{eqnarray*}
+P(Y \leq s) = \int_{- \infty}^{\infty} P(Y \leq s \mid X = t) dens(X = t) dt \qquad (*)
+\end{eqnarray*}
+
+Differentiating (*) relative to $s$, we find :
+
+\begin{eqnarray*}
+dens(Y = s) = \int_{- \infty}^{\infty} dens(Y = s \mid X = t) dens(X = t) dt
+\end{eqnarray*}
+
+This is the Law of Alternative for densities!
+
+Here is an example with order statistics where we have the Dirichlet process on the interval $[0, a]$ with $n$ points:
+\begin{eqnarray*}
+dens(X_{(2)} = t) = \int_{s = 0}^{t} dens(X_{(2)} = t \mid X_{(1)} = s) dens(X_{(1)} = s) ds
+\end{eqnarray*}
+
+Note the limits of integration from $s = 0$ to $t$.  $X_{(1)}$ can range from $0$ up to $t$, the value of $X_{(2)}$.
+
+We can compute this directly as a means of checking.
+\begin{eqnarray*}
+dens(X_{(1)} = s) = {{n} \choose {0, 1, n - 1}} \frac {1}{a} \frac {(a - s)^{n - 1}}{a^{n - 1}}\\
+dens(X_{(2)} = t \mid X_{(1)} = s) = {{n - 1} \choose {0, 1, n - 2}} \frac {(a - t)^{n - 2}}{(a - s)^{n - 1}}
+\end{eqnarray*}
+
+A quick calculation allows us to simplify the equation further :
+
+\begin{eqnarray*}
+{{n - 1} \choose {0, 1, n - 2}} &=& \frac {(n - 1)!}{(n - 2)!}\\
+                                &=& n - 1
+\end{eqnarray*}
+
+Plugging this into the formula yields :
+
+\begin{eqnarray*}
+dens(X_{(2)} &=& t | X_{(1)}) = \int_{s = 0}^{t} (n - 1) \frac {(a-t)^{n - 2}}{(a - s)^{n - 1}} n \frac {(a - s)^{n - 1}}{a^n} ds\\
+             &=& n(n - 1) \frac {(a - t)^{n - 2}}{a^n} \int_{s = 0}^{t} ds\\
+             &=& n(n - 1) \frac {(a - t)^{n - 2}}{a^n} t
+\end{eqnarray*}
+
+Solving for $dens(X_{(2)} = t)$ directly gives us :
+\begin{eqnarray*}
+dens(X_{(2)} = t) = {{n} \choose {1, 1, n - 2}} \frac {t}{a} \frac {(a - t)^{n - 2}}{a^{n - 2}} \frac {1}{a}
+\end{eqnarray*}
+
+This simplifies to :
+\begin{eqnarray*}
+dens(X_{(2)}) = n(n-1) \frac{t(a-t)^{n-t}}{a^n}
+\end{eqnarray*}
+
+\section{Needles on a Stick}
+Recall that this is an instance of a problem that was mentioned on the first day of class as an unsolved general problem.  For 1D, as shown below, it is solved.  However, for the general n-Dimensional case, it has not been solved.
+
+The basic formulation of the problem is as follows :
+\begin{itemize}
+\item[]You have $n$ needles of length $h$ and a stick of length $a$.
+\item[]Given that none of the needles can ``stick out'' on either side of the stick, what's the probability that you can lay all $n$ of the neddles down on the stick with none of the needles overlapping?
+\end{itemize}
+
+The event sought by the problem is :
+\begin{itemize}
+\item[]$B_{a, n} = (L_1 \geq h) \cap (L_2 \geq h) \cap \ldots \cap (L_n \geq h)$
+\item[]$B_{a, n} = $ the event that $n$ needles of length $h$ dropped on a stick of length $a$ do \em not \em overlap.
+\end{itemize}
+
+Let's clarify what ``dropping a needle'' means.  It means that on the interval $[0, a]$, we pick a number $x \in [0, a]$, and lay the full length of the needle to the left of $x$.
+
+So, what is $P(B_{a,n})$?
+
+Let's start by conditioning on $X_{(1)}$ (the first gap).  You will see in a moment why I chose to condition on $X_{(1)}$.
+
+\begin{eqnarray*}
+P(B_{a,n} = \int_{s=h}^{a-(n-1)h}{P(B_{a,n} \mid X_{(1)}=s) dens(X_{(1)}=s)ds}
+\end{eqnarray*}
+
+Now, we note that $P(B_{a,n} \mid X_{(1)}=s)$ is the same as dropping $n-1$ needles on a stick of length $a-s$!!  So, this integral simplifies to :
+
+\begin{eqnarray*}
+P(B_{a,n}) = \int_{s=h}^{a-(n-1)h}{P(B_{a-s,n-1}) dens(X_{(1)}=s)ds}
+\end{eqnarray*}
+
+So, now we can try to solve this above equation (let's call it (**)) by induction.
+
+\begin{itemize}
+\item Base Case: One needle\\
+It is obvious that since you cannot drop a needle less than $h \in [0, a]$, $P(B_{a,1}) = \frac{a-h}{a}$
+\item Inductive Step: Assume that we pulled the following conclusion out of a hat and use it to solve (**) : 
+\begin{eqnarray*}
+P(B_{a,n}) = \frac{(a-nh)^n}{a^n}
+\end{eqnarray*}
+
+Substituting into (**), we find :
+\begin{eqnarray*}
+P(B_{a,n}) &=& \int_{s=h}^{a-(n-1)h}{\frac{((a-s)-(n-1)h)^{n-1}}{(a-s)^{n-1}} \times n\frac{(a-s)^{n-1}}{a^n}ds}\\
+           &=& \frac{n}{a^n} \int_{s=h}^{a-(n-1)h}{(a-s-(n-1)h)^{n-1}}\\
+           &=& \frac{n}{a^n} \left[ -\frac {1}{n} (a-s-(n-1)h)^n \right]_{s=h}^{a-(n-1)h}\\
+           &=& 0 - \frac{-1(a-nh)^n}{a^n}\\
+           &=& \frac{(a-nh)^n}{a^n}
+\end{eqnarray*}
+
+As desired!  Next time, we will cover the continuous analog of Bayes's Law.
+\end{itemize}
+

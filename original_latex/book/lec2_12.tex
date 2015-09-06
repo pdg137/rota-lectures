@@ -1,0 +1,110 @@
+\noindent{\Large 18.313 Lecture 5, Friday, February 12, 1999}\newline
+\noindent{\large Lecture by Prof. G.-C. Rota}\newline
+\noindent Transcribed by Pegah Ebrahimi (ebrahimi@mit.edu)\newline
+
+{\bf Random Variables} (Integer-valued):
+\\
+X($\omega$) is an integer. We can say from an occupancy point of view
+of random variables that an integer is assigned to every block. A {\bf
+Partition} of  a sample space, say $\Pi$ is a  countable family of events
+such that:
+\begin{enumerate}
+\item
+if $B \in \Pi$ then $P(B) > 0$
+\item
+if $B_{1}, B_{2} \in \Pi$ then $B_{1} \bigcap B_{2} = \emptyset$ if $B_{1} \neq B_{2}$
+\item
+P($\bigcup B$) = 1 for B $\in \Pi$    
+\end{enumerate}
+This does not mean that the union of all B's is the sample space. In a
+{\bf random variable}, the family $\{(X = n)... n$ integers\} for which
+$P(X = n)> 0$, forms a partition of the sample space $\Omega$. If {\bf
+X} is an integer random variable then the sequence $p_n=P(X=n)$ is
+called the probability distribution of X. So we have:
+\begin{displaymath} p_n > 0 \mbox{ and } \sum_n p_n =1 \end{displaymath}
+since 
+\begin{displaymath} \sum_n p_n = \sum_n P(X = n)\end{displaymath}
+\\
+The events are disjoint so by countable additivity, we have
+\begin{displaymath}=   P(\bigcup_n(X = n)) = P(\Omega) = 1\end{displaymath}
+{\large\bf Expectation:}  (average value of the Random Variable)
+\begin{displaymath}E(X)=\sum_n n P(X = n) = \sum_n n p_n\end{displaymath}
+Given two random variables on $\Omega$, say X and Y, 
+say $P(X = n) = p_n$ and $P(Y = n) = q_n$ where $p_n + q_n\neq1$. 
+Let the joint distribution of X and Y $P((X = i)\bigcap(Y = j))$ 
+be the double-index sequence $r_{ij}$.
+X and Y are independent when $P((X = i)\bigcap(Y = j)) = P(X = i)* P(Y= j)$ for all integers {\it i} and {\it j}
+ and so $r_{ij} = p_iq_j$. Now consider:\\
+\begin{displaymath}(X = i)\bigcap \Omega = (X = i)\bigcap (\bigcup_j (Y= j)) = \bigcup_j (X = i) \bigcap (Y = j)\end{displaymath}
+\begin{displaymath}P(X = i) = \sum P((X = i) \bigcap (Y = j))\end{displaymath}
+\begin{displaymath}p_i = \sum_i^j r_{ij}\indent\indent q_j = \sum_i^j r_{ij}\end{displaymath}
+{\large\bf Applications:}
+
+\indent What is the probability distribution of the random variable X + Y?
+\begin{displaymath}(X + Y = n) = \bigcup_i (X = i) \bigcap (Y = n-i)\end{displaymath}
+\indent Taking Probabilities:
+\begin{displaymath}P(X + Y = n) = \sum_i P((X = i) \bigcap (Y = n-i)) = \sum_i r_i, n-i\end{displaymath}
+\indent In Particular;  if X and Y are independent:
+\begin{displaymath}P(X + Y = n) = \sum_i p_iq_{n-i}\end{displaymath}
+{\large\bf Theorem}:  ``The Gift of God Theorem''
+{\bf \begin{displaymath}E(X + Y) = E(X) + E(Y)\end{displaymath}}
+Proof:\begin{displaymath}E(X+Y)=\sum_n nP(X+Y=n)=\sum_n n \sum_iP((X=i)\bigcap(Y=n-i))\end{displaymath}
+\begin{displaymath}=\sum_{i,n}(i+(n-i))P((X=i)\bigcap(Y=n-i)) = \sum_{i,j}(i+j)P((X=i)\bigcap(Y=j))\end{displaymath}
+\begin{displaymath}=\sum_{i,j}iP((X=i)\bigcap(Y=j))+\sum_{i,j}jP((X=i)\bigcap(Y=j))\end{displaymath}
+\begin{displaymath}=\sum_ii\sum_jP((X=i)\bigcap(Y=j))+\sum_jj\sum_iP((X=i)\bigcap(Y=j))\end{displaymath}
+by countable additivity
+$\Downarrow$
+\begin{displaymath}=\sum_iiP(\bigcup_j(X=i)\bigcap(Y=j))+\sum_jj\sum_iP((X=i)\bigcap(Y=j))\end{displaymath}
+by distributive law$\Downarrow$
+\begin{displaymath}=\sum_iiP((X=i)\bigcap\bigcup_j(Y=j))+\sum_jj\sum_iP((X=i)\bigcap(Y=j))\end{displaymath}
+and since $\Omega = \bigcup_j(Y=j)$
+\begin{displaymath}=\sum_iiP((X=i)\bigcap\Omega)+\sum_jj\sum_iP((X=i)\bigcap(Y=j))\end{displaymath}
+\begin{displaymath}=\sum_iiP(X=i) + \sum_jjP(Y=j)\end{displaymath}
+But note that $E(X)=\sum_iiP(X=i)$ and similarly for E(Y). So we have
+\begin{displaymath} E(X+Y)= E(X) + E(Y)\end{displaymath}
+{\Large\bf Examples:}
+\\
+Ex:4{\it (continued)}- {\bf Maxwell-Boltzman}: $\Omega_{MB}$\newline
+\begin{itemize}
+\item {\it k} balls into {\it n} boxes\\
+$\bullet$\indent $\bullet$\indent $\bullet$\indent $\bullet$\indent $\bullet$\indent $\bullet$.......$\bullet$\indent {\it k}B\\
+\begin{displaymath}\bigsqcup_{\theta_1}\indent \bigsqcup_{\theta_2}\indent \bigsqcup_{\theta_3}\indent \bigsqcup_{\theta_4}......\bigsqcup_{\theta_n}\indent nU\end{displaymath}\\
+$\theta_1$ is a random variable such that 
+\begin{displaymath}P(\theta_1=i)=(^k_i)\frac{(n-1)^{k-i}}{n^k}= p_i\end{displaymath}
+\begin{displaymath}\sum_ip_i=1\end{displaymath}
+\begin{displaymath}\sum_{i=0}^k(^k_i)\frac{(n-1)^{k-i}}{n^k}=1\end{displaymath}
+\begin{displaymath}n^k = (n-1+1)^k= \sum_{i=0}^k (^k_i)(n-1)^{k-i} (1^i)\end{displaymath}
+so we have another proof of the binomial theorem:
+\begin{displaymath}(a+b)^k=\sum_{i=0}^k(^k_i)a^ib^{k-i}\end{displaymath}
+\item $\theta_1$ and $\theta_2$ {\bf Joint-Distribution}:
+\begin{displaymath}P((\theta_1=i)\bigcap(\theta_2=j))=
+(^k_i)(^{k-i}_j)\frac{(n-2)^{k-i-j}}{n^k}\end{displaymath}
+\begin{displaymath}P(\theta_1=i)=\sum_jP((\theta_1=i)\bigcap(\theta_2=j))\end{displaymath}
+\begin{displaymath}(^k_i)\frac{(n-1)^{k-i}}{n^k}=\sum_j(^k_i)(^{k-i}_j)\frac{(n-2)^{k-i-j}}{n^k}\end{displaymath}
+\item In general
+\begin{displaymath}P((\theta_1=i_1)\bigcap(\theta_2=i_2)\bigcap...\bigcap(\theta_n=i_n))\end{displaymath}
+\begin{displaymath}
+=\left\{
+\begin {array}{rcl} 
+0 & if & i_1+i_2+...+i_n\neq k\\
+(^k_{i_1})(^{k-{i_1}}_{i_2})(^{k-{i_1}-{i_2}}_{i_3})...(^{k-{i_1}-{i_2}-...{i_{
+n-2}}}_{i_{n-1}})(\frac{1}{n^k}) & if & otherwise
+\end{array} \right\}
+\end{displaymath}
+We will simplify this later.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

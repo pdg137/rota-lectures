@@ -1,0 +1,90 @@
+\noindent{\Large 18.313, Lecture 8, Monday, February 22, 1999}\newline
+\noindent{\large Lecture by Prof. G.-C. Rota}\newline
+\noindent Transcribed by Boris Kozinsky (bkoz@mit.edu)\newline
+
+\section{Random Walk Summary from Last Lecture}
+
+Consider a random walk in 1 dimension. The sample points are all
+continuous functions with inclined segments of slope 1 or -1. The sample 
+space is $\Omega=${\em all paths}.\\ Random variables $X_1, X_2, ...$ are
+independent and identically distributed.
+
+\[P(X_n=1)=P(X_n=-1)=\frac{1}{2}\]
+where $X_n$ is the value at the $n^{th}$ step of the path.\\
+Other useful random variables:\\
+$X_1+...+X_n=$ position at time $n$\\
+$Z_a=$ waiting time to reach level $a$\\
+$M_n=$ maximum in first $n$ steps.\\
+
+\section{Conditional Probability}
+
+Probability of event A given B is denoted by $P(A|B)$ and is defined as
+follows:
+\[P(A|B)=\frac{P(A\cap B)}{P(B)}\]
+It is not hard to see that this satisfies all the axioms of probability.
+\\ \\ {\bf Ex:} A family with two children\\
+$A$ = event that the first child is a boy\\
+$B$ = event that at least one child is a boy
+\[P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{1/2}{3/4}=\frac{2}{3}\]
+{\bf Ex:} Maxwell-Boltzmann statistics
+
+\[P(\theta_2=j|\theta_1=0)=\frac{P(\theta_2=j \cap
+\theta_1=0)}{P(\theta_1=0)}=\frac{{k \choose j}
+(n-2)^{k-j}/n^k}{(n-1)^k/n^k}=\frac{{k \choose j}
+(n-2)^{k-j}}{(n-1)^k}\]
+{\bf Ex:} Plague \\
+$A$ = event that patient has plague   $P(A)=0.1$ \\
+$B$ = event that test is accurate   $P(B)=0.8$ \\ 
+Assume that events $A$ and $B$ are independent\\
+$C$ = event that the test is positive $C=(A\cap B)\cup(A^c\cap B^c)$
+\[P(C)=P(A\cap B)+P(A^c\cap B^c)=0.1*0.8+0.9*0.2=0.26\]
+\[P(A|C)=4/13\]
+\\
+{\Large Law of Alternatives}
+\\ \\
+Imagine that the sample space $\Omega$ is partitioned into disjoint
+events whose union equals $\Omega$. Let's denote this set of events
+(partition) by $\pi$. Then we have the following relation:
+\[P(A)=\sum_{B\in\pi}P(A\cap B)=P(\bigcup_{B\in\pi}(A\cap B))=
+P(A\cap\bigcup_{B\in\pi}B)=P(A\cap\Omega)=P(A)\]
+\\
+{\Large Law of Successive Conditioning}
+\\
+\[P(A\cap B)=P(A)P(B|A)\]
+\[P(A\cap B\cap C)=P(A)P(B|A)P(C|A\cap B)\]
+{\bf Ex:} Sampling without replacement.\\
+We have an urn with $r$ red balls and $b$ black balls. 
+Consider a sequence of extractions $X_1, X_2, ..., X_{r+b}$
+\[P(X_1=1)=\frac{r}{r+b}\]
+\[P(X_1=0)=\frac{b}{r+b}\]
+\[P(X_1=1\cap X_2=0)=P(X_1=1)P(X_2=0|X_1=1)=\frac{r}{r+b}\frac{b}{r+b-1}\]
+\[[P(X_1=1\cap X_2=0\cap X_3=1)=\frac{r}{r+b}\frac{b}{r+b-1}
+\frac{r-1}{r+b-2}\]
+More generally
+\[P(X_1=i_1\cap...\cap X_n=i_n)=?\]
+This depends only on how many among $i_1,...,i_n$ are red. Say $i$ of
+them are red and j are black. Then
+\[P(X_1=i_1\cap...\cap X_n=i_n)=\frac{r(r-1)...(r-i+1)b(b-1)...(b-j+1)}
+{(r+b)(r+b-1)...(r+b-i-j+1)}=\frac{(r)_i(b)_j}{(r+b)_{i+j}}\]
+Let A be the event that after extracting n balls we have i red and j
+black balls. There are $r+b \choose n$ ways to extract n balls
+\[P(\#red=i)=\frac{{r \choose i}{b \choose j}}{{r+b \choose n}}\]
+This is called the {\em hypergeometric} distribution.\\
+Note that (the first result)*$n\choose i$= (new result). 
+\\ \\
+Now imagine a box with $c$ balls of n colors $c_1,...,c_n$.
+\[P(X_1=i\cap X_2=j)=\frac{c_i}{c}\frac{c_j}{c-1}\]
+if $i\neq j$ and
+\[=\frac{c_i}{c}\frac{c_i-1}{c-1}\]
+if $i=j$.
+\[P(X_1=i_1\cap...\cap X_k=i_k)=\frac{(c_1)_{j_1}...(c_n)_{j_n}}{(c_1+...+c_n)_k}\]
+
+\[\frac{{c_1 \choose j_1}...{c_n \choose j_n}}{{c_1+...+c_n \choose k}}=
+{k \choose j_1,...,j_n}*\frac{(c_1)_{j_1}...(c_n)_{j_n}}{(c_1+...+c_n)_k}\]
+\\
+A sequence $X_1, X_2,...,X_n$ of integer random variables is said to be
+{\em exchangeable} when all $P(X_1=i_1 \cap ... \cap X_k=i_k)$ depend
+only on how many of $i_1,...,i_k$ each there are and not on their order.\\
+For example, in Maxwell-Boltzmann statistics $\theta_1,...,\theta_k$ are
+exchangeable.Independent identically distributed sequences are always exchangeable.
+

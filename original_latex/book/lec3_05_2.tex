@@ -1,0 +1,81 @@
+{\Large 18.313 Lecture 12, Friday, March 5, 1999}\\
+{\large Lecture by Prof. Gian Carlo Rota}\\
+Transcribed by Pegah Ebrahimi and Nikos Michalakis\\
+
+{\bf Random Walk}:
+\\
+$Y_1,Y_2,...\indent \indent \indent i.d.$indepenent random variables\\
+\\$Y_1+Y_2+...Y_n = G_n =$ position at time {\it n}.\\
+\begin{displaymath}P(Y_n= +1) = \frac{1}{2} \end{displaymath}
+\begin{displaymath}P(Y_n= -1) = \frac{1}{2} \end{displaymath}
+\begin{displaymath}P(G_n= x)  = \frac{1}{2^n}(\mbox{  }^n_{\frac{n+x}{2}})\end{displaymath}
+\\
+\begin{displaymath}Z_a = \mbox{random
+variable\indent\indent\indent\indent} a>0\end{displaymath}
+\begin{displaymath}(Z_a =n) = (G_1<a)\cap(G_2<a)\cap...\cap(G_{n-1}<a)\cap(G_n=a)\end{displaymath}
+\begin{displaymath}Z_a = \mbox{waiting time to reach level a}
+\end{displaymath}
+\\
+\begin{displaymath}M_n = \mbox{random variable}\end{displaymath}
+\begin{displaymath}M_n = \mbox{max}(0,G_1,G_2,...,G_n)\end{displaymath}
+\begin{displaymath}M_n = \mbox{maximum level reached in first {\it n} steps} \end{displaymath}
+\\
+{\bf\large Observe:}\\
+\begin{displaymath}(M_n = a) = (Z_a \leq n) - (Z_{a+1}\leq n) \end{displaymath}
+\\
+{\bf\Large Reflection Principle:}\\
+\begin{displaymath}\mbox{-consider the event\indent\indent }(G_n = x) \cap (Z_a \leq
+n)\indent\indent\indent\indent x \leq a \end{displaymath}
+\begin{displaymath}\mbox{Reflection Principle}\rightarrow P((G_n = x)\cap(Z_a \leq n)) = P(G_n = x-2a) =
+P(G_n = 2a-x) \end{displaymath}
+\\
+\begin{displaymath}P(Z_a = n) = P(Z_a=n|Y_n=+1)\underbrace{P(Y_n=+1)}_\frac{1}{2}+\underbrace{P(Z_a=n|Y_n=-1)}_0P(Y_n=-1)\end{displaymath}
+\begin{displaymath}(Z_a = n)\cap(Y_n=1)=(G_{n-1}=a-1)(Y_n=1)-(G_{n-1}=a-1)\cap(Z_a<n-1)\cap(Y_n=1) \end{displaymath}
+\\
+\begin{displaymath}P(Z_a=n|Y_n=1)=\frac{P((Z_a=n)\cap(Y_n=1)}{P(Y_n=1)}=\frac{P((G_{n-1}=a-1)\cap(Y_n=1))}{P(Y_n=1)}-\end{displaymath}
+\\
+\begin{displaymath}\frac{P((G_{n-1}=a-1)\cap(Z_a<n-1)\cap(Y_n=1)}{P(Y_n=1)}\end{displaymath}
+\begin{displaymath}P(Z_a=n|Y_n=1)=P(G_{n-1}=a-1)-P((G_{n-1}=a-1)\cap(Z_a\leq
+n-1))\end{displaymath}
+\begin{displaymath}P(G_{n-1}=a-1)-P(G_{n-1}=2a-(a-1))\end{displaymath}
+\begin{displaymath}P(Z_a=n)\frac{1}{2}(P(G_{n-1}=a-1)-P(G_{n-1}=a+1))\end{displaymath}
+\begin{displaymath}\mbox{simplified}\rightarrow\indent
+=\frac{a}{n\cdot 2^n}(\mbox{  }^n_{\frac{n+a}{2}})\end{displaymath}
+{\bf Want:\indent\indent}$P(M_n=a)=?$\\
+\begin{displaymath}P((M_n=a)\cap(G_n=x))=P((M_n\geq
+a)\cap((g_n=x))-P((M_n\geq a+1)\cap(G_n=x))\end{displaymath}
+\begin{displaymath}=P(G_n=x-2a)-P(G_n=x-2a-2)\end{displaymath}
+\begin{displaymath}P(M_n=a)=\sum_{x\leq a}P((M_n=a)\cap(G_n=x))\end{displaymath}
+after cancelations:
+\begin{displaymath}P(M_n=a)=P(G_n=a)+P(G_n=a+1)\end{displaymath}
+What is $P(A_{2k}|G_{2n}=0)?$\\
+$A_{2k} =$ event that 2{\it k} sides are above t-axis\\
+$P(A_{2k}|G_{2n}=0)$is  the same for all {\it k}'s\\
+\\
+$P_0=$probability of no changes of sign(no crossing of the axis)\\
+$P_1=$probability of one change of sign\\
+$P_3=$probability of two change of signs\\
+\\
+\begin{displaymath}P_0>P_1>P_2>...\end{displaymath}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

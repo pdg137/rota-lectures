@@ -1,0 +1,182 @@
+{\Large 18.313, Lecture 8, Monday, February 22, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\\
+Transcribed by Yvonne Lai (yvonne@mit.edu) and David Wang (dcwang@mit.edu)\\
+
+\section{Random Walk Summary}
+On Friday you all saw random walks.  Here is a quick summary of what you \em should \em have gotten out of the lecture\ldots
+\begin{itemize}
+\item[] $\Omega$ = all possible paths
+\item[] Note : a path is simply a sequence (possibly infinite) of $1$s and $-1$s
+\item[] On this $\Sigma$, we can define Random Variables $Y_1, Y_2, \ldots$ that are identically distributed and independent.  So, $P(Y_n = 1) = \frac{1}{2}$, $P(Y_n = -1) = \frac{1}{2}$.  Here, $Y_n$ is the $n^{th}$ step.  The probability distribution is similar to the Radamacher function in measure theory.
+\end{itemize}
+Now, there are many random variables that we are interested in, such as : 
+\begin{itemize}
+\item $G_n = Y_1 + Y_2 + \ldots + Y_n$ (This is called the \em position \em at time $n$)
+\item $ Z_a$ = waiting time to reach ``level'' $a$ (This is how long it takes for a given path to reach a height of $a$)
+\item $M_n$ = maximum level attained in the first $n$ steps
+\item[] Here is a TOUGH Random Variable : Number of sign changes in the first $n$ steps
+\end{itemize}
+In order to tackle something like $M_n$ more effectively, we need to develop better techniques than those currently in our toolchest.  This last example is a motivation for our next topic : Conditional Probability.
+
+\section{Conditional Probability}
+Now, I've stated before that given a sample space $\Omega$ and a family of events $\cal{E}$, we can define a probability measure $P$ on $\cal{E}$.  But, I never stated that an event can have only one $P$!  Now is the time to adjust our minds to this new idea of conditional probability.
+
+Some handwaving first : 
+
+Given $A$, $A \subseteq \Sigma$. 
+
+Say the probability of $A$ changes according to whether or not $B$ has occured.  If $B$ has occured, the only events in $A$ that can occur are those also in $A \cap B$. In other words, the only events that can occur are in $B$. 
+
+What if $A$ is the entire sample space? Then $P(A \cap B) = P(\Sigma \cap B) = P(B)$.   But this doesn't equal to 1 \ldots
+Thus, we renormalize :
+\begin{eqnarray*}
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\end{eqnarray*}
+This is known as the conditional probability of $A$ given $B$.\\
+It is also called $P_B(A)$, emphasizing that the probability is with respect to $B$.
+
+In renormalizing, we have thus created a new probability in the sample space
+$\Sigma$.  In fact, this new probability satifies all the axioms of probability
+on the same sample space of $\Sigma$, $\cal{E}$.
+
+Now, $P_B$ satisfies all the axioms of a probability measure given the same sample space $\Omega$ and $\cal{E}$ that we have already talked about.\\
+Example : 
+\begin{eqnarray*}
+P_B(A^{c}) &=& 1 - P_B(A)
+\end{eqnarray*}
+The left hand side is : 
+\begin{eqnarray*}
+P_B(A^{c}) &=& \frac{P(A^{c} \cap B)}{P(B)} \\
+\end{eqnarray*}
+Note that : 
+\begin{eqnarray*}
+                          P(A^{c} \cap B) + P(A \cap B) &=& P(B) \\
+\frac{P(A^{c} \cap B)}{P(B)} + \frac{P(A \cap B)}{P(B)} &=& 1 \\
+P(A^{c} \mid B) + P(A \mid B) &=& 1 \\
+P(A^{c} \mid B) &=& 1 - P(A \mid B)
+\end{eqnarray*}
+Likewise, the other axioms hold : 
+\begin{eqnarray*}
+P(\emptyset \mid B) &=& \emptyset \\
+P(\Omega \mid B) &=& 1 \\
+P(A_1 \cup A_2 \cup \ldots \mid B) &=& P(A_1 \mid B) + P(A_2 \mid B) + \ldots \\
+& & \mbox{ if } A_1, A_2, \ldots \mbox{ are disjoint}
+\end{eqnarray*}
+
+This concept of taking a new probability simply by taking a quotient
+is amazing!  The intuitive concept rendered by this is powerful and useful.  
+
+Checking this idea against independence.  If $A$ and $B$ are independent, what is $P(A \mid B)$?  Intuitively, it should be $P(A)$ because $A$ does not care about $B$.
+\begin{eqnarray*}
+P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)
+\end{eqnarray*}
+Of course, all this means nothing without examples, so here are some Mickey Mouse examples to illustrate this concept.
+
+\section{Examples of Conditional Probability}
+\subsection{Bernoulli Process}
+We are given a man, his wife, and their two children, and we ask the following questions : 
+\begin{itemize}
+\item What's the probability that their first child is a boy?  Trivial; it's $\frac{1}{2}$
+\item What's the probability that their first child is a girl?  Well, a girl is just as likely as a boy, so it's $\frac{1}{2}$
+\item Here's a tougher one.  What's the probability that the the couple's first child will be a boy if we \em know \em they have at least one boy?  Not so simple now\ldots
+\end{itemize}
+So here's how the problem works.  Let :
+\begin{itemize}
+\item[] A = event that the first child is a boy
+\item[] B = event that \em at least \em one child is a boy
+\end{itemize}
+It's obvious that the fact that $P(B) = \frac{3}{4}$ because with two children, the only way to not have a boy is to have two girls, and that happens 1 out of 4 ways.
+Thus, the probability that we are interested in, using conditional probability, is : 
+\begin{eqnarray*}
+P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{1/2}{3/4} = \frac{2}{3}
+\end{eqnarray*}
+\subsection{Maxwell Boltzman}
+So now we will do balls and boxes\ldots
+What is the probability that a box has $j$ balls in it given that another box has 0 balls in it?  Thus, we are interested in : 
+
+$P(\theta_2 = j \mid \theta_1 = 0)$ = ?
+\begin{eqnarray*}
+P(\theta_2 = j \mid \theta_1 = 0) &=& \frac{P(\theta_2 = j) \cap (\theta_1 = 0)}{P(\theta_1 = 0)} \\
+                                  &=& \frac{{k \choose j} (n-2)^{k-j} / n^{k}}{(n-1)^{k} / n^{k}} \\
+                                  &=& {k \choose j} \frac{(n-2)^{k-j}}{(n-1)^{k}}
+\end{eqnarray*}
+Of course, one could have done this one without conditional probability.  You could have just taken out one box (since its occupancy number is 0) and do the same thing with $n-1$ boxes.  The answer comes out the same either way.
+\subsection{The Plague}
+This is a classical, bread and butter example of probability.  Imagine a plague has just swept over the city, and that the probability that a person in the city has the plague is 10%.  Furthermore, let's say that there is a test to determine if a person has the plague or not, and it is \em accurate \em 80% of the time.  So, 
+\begin{itemize}
+\item[] A = event that the patient has the plague
+\item[] B = event that the test is \em accurate
+\item[] Note : A and B are independent events.  The test does not cause the person to have the plague nor affect the person catching the plague.
+\end{itemize}
+Now, let : 
+\begin{itemize}
+\item[] C = event that the test is \em positive \em
+\end{itemize}
+What is $P(C)$?
+\begin{eqnarray*}
+C = (A \cap B) \cup (A^{c} \cap B^{c})
+\end{eqnarray*}
+This is obvious, since $C$ occurs only when a patient has the plague and the test is accurate, or the patient does not have the plague and the test is not accurate (false positive).  And wonder of wonders, C is also expressed as a union of disjoint sets\ldots
+\begin{eqnarray*}
+P(A) &=& 0.1\\
+P(B) &=& 0.8\\
+P(C) &=& P(A \cap B) + P(A^{c} \cap B^{c}) \\
+     &=& P(A)P(B) + P(A^{c})P(B^{c}) \\
+     &=& 0.1 \times 0.8 + 0.9 \times 0.2 \\
+     &=& 0.26
+\end{eqnarray*}
+This result is cute, but it's not really useful.  Who cares about the probability that the test is positive in the middle of a plague?  No\ldots what people really care about is whether they have the plague given that their test says positive!  How do we formulate this burning question?  Simple.  The people are merely asking for $P(A \mid C)$.  So, let's calculate that.
+\begin{eqnarray*}
+P(A \mid C) &=& \frac{P(A \cap C)}{P(C)} \\
+            &=& \frac{P(A \cap B)}{P(C)} \\
+            &=& \frac{P(A)P(B)}{P(C)}\\
+P(A \mid C) &=& \frac{4}{13}
+\end{eqnarray*}
+Note that : 
+\begin{eqnarray*}
+A \cap C &=& A \cap ((A \cap B) \cup (A^{c} \cap B^{c}))\\
+         &=& (A \cap (A \cap B)) \cup (A \cap (A^{c} \cap B^{c}))\\
+         &=& (A \cap B) \cup \emptyset\\
+         &=& A \cap B
+\end{eqnarray*}
+\subsection{Three Fundamental Properties of Conditional Probability}
+Well, it's actually two fundamental laws and a very useful third property, but that's not important.  Here they are :
+
+Law of Alternatives\\
+Given a $\Omega$, we will let $\Pi$ be a partition of $\Omega$ with blocks $B$.  Then,
+\begin{eqnarray*}
+\pi = {B} \\
+B, B' \in \pi\rightarrow B \\
+\cap B' = \emptyset \\
+P(B) > 0 \\
+P(\cup_{B \in \pi} B) = 1
+\end{eqnarray*}
+Now, given that $\pi$ is a partition of the sample space $\Omega$, then for any event $A$ we have : 
+\begin{eqnarray*}
+P(A) = \sum_{B \in \pi}{P(A \mid B)P(B)}
+\end{eqnarray*}
+Proof : 
+\begin{eqnarray*}
+\sum_{B \in \pi}{P(A \mid B)P(B)} &=& \sum_{B \in \pi}{\frac{P(A \cap B)}{P(B)} P(B)} \\
+                                  &=& \sum_{B \in \pi}{P(A \cap B)} \\
+                                  &=& P(\cup_{B \in \pi}{(A \cap B)} \\
+                                  &=& P(A \cap \cup_{B \in \pi}{B}) \\
+                                  &=& P(A \cap \Omega) \\
+                                  &=& P(A)
+\end{eqnarray*}
+Note that since B are blocks of the partition $\pi$, they must be disjoint.  That allows us to move from a sum of probabilities to a probability of sums.
+
+Law of Successive Conditioning
+Quite simply, this is : 
+\begin{eqnarray*}
+P(A \cap B) = P(A)P(B \mid A)
+\end{eqnarray*}
+Substitute $\frac{P(B \cap A)}{P(A)} = P(B \mid A)$ and you'll get the conclusion.  It looks very innoculous, doesn't it?  Let's do this for $P(B_1 \cap B_2 \cap B_3)$.  Now, we \em dream \em that the results look something like : $P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2)$\ldots
+
+So let's convince ourselves of that.
+\begin{eqnarray*}
+P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2) = P(B_1)\frac{P(B_1 \cap B_2)}{P(B_1)}\frac{P(B_1 \cap B_2 \cap B_3)}{P(B_1 \cap B_2)}
+\end{eqnarray*}
+Miracles of miracles, it works out!  Next time, we'll see more examples of this.
+
+

@@ -1,0 +1,101 @@
+{\Large 18.313, Lecture 22, Friday, April 9, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\newline
+Transcribed by Carla M. Pellicano (carpel@mit.edu) and Peter Shulman (skip@mit.edu)\newline
+
+{\bf Continuous Bayes's Law}:
+
+\noindent\underline{Fundamental Theorem on Expectation}
+\begin{eqnarray*}
+E(X+Y)=E(X)+E(Y)
+\end{eqnarray*}
+
+We have already shown that this works for integer random variables.  Now, we shall translate it, such that it applies to any random variables.  We replace sums with integrals, but technically, its the same thing.
+
+Suppose $dens(X=s)$ and $dens(Y=t)$, such that $P(X\leq s)=\int_{-\infty}^{s}\!\!\! dens(X=u)du$
+
+The individual densities, $dens(X=s)+dens(Y=t)$, do not give the joint statistical behavior.  We need the joint density, $dens(X=s,Y=t)$.  For the probability, we have
+\begin{eqnarray*}
+P((X\leq s)\cap(Y\leq t))=\int_{-\infty}^{s}\!\int_{-\infty}^{t}\!\!\! dens(X=u,Y=v)dvdu
+\end{eqnarray*}
+
+In particular, we want
+\begin{eqnarray*}
+dens(X=s)=\int_{-\infty}^{\infty}\!\!\! dens(X=s,Y=t)dt\\
+dens(Y=t)=\int_{-\infty}^{\infty}\!\!\! dens(X=s,Y=t)ds
+\end{eqnarray*}
+
+Now we can take the random variables $X$ and $Y$ and add them.  What is $dens(X+Y=u)$?
+\begin{eqnarray*}
+dens(X+Y=u)=\int_{-\infty}^{\infty}\!\!dens(X=s,Y=u-s)ds
+\end{eqnarray*}
+
+Therefore, 
+\begin{eqnarray*}
+E(X)=\int_{-\infty}^{\infty}\!\!\!\!s\,dens(X=s)ds\;\;\;\;\;E(Y)=\int_{-\infty}^{\infty}\!\!\!\!t\,dens(Y=t)dt
+\end{eqnarray*}
+
+From the definition of expectation, we find
+\begin{eqnarray*}
+E(X+Y)=\int_{-\infty}^{\infty}\!\!\!u\;dens(X+Y=u)du=\int_{-\infty}^{\infty}\!\!\!u\int_{s=-\infty}^{\infty}\!\!\!\!\!\! dens(X=s,Y=u-s)dsdu
+\end{eqnarray*}
+
+
+Now let's change variables.  Let $u-s=t$.  
+\begin{eqnarray*}
+E(X+Y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\!\!\!(s+t)dens(X=s,Y=t)dsdt
+\end{eqnarray*}
+
+We can split this integral into the sum of two integrals.
+\begin{eqnarray*}
+E(X+Y)&=&\int_{-\infty}^{\infty}\!\!\!s\underbrace{\left[\int_{-\infty}^{\infty}\!\!\!dens(X=s,Y=t)dt\right]}_{\mbox{this is just }dens(X=s)}ds+\int_{-\infty}^{\infty}\!\!\!t\underbrace{\left[\int_{-\infty}^{\infty}\!\!\!\!dens(X=s,Y=t)ds\right]}_{\mbox{this is just }dens(Y=t)}dt\\
+&=&\int_{-\infty}^{\infty}\!\!\!\!s\;dens(X=s)ds+\int_{-\infty}^{\infty}\!\!\!\! t\;dens(Y=t)dt=E(X)+E(Y)
+\end{eqnarray*}
+
+Which is the result that we desired.
+
+\noindent\underline{Continuous Analog of Bayes's Law}
+
+Let's recall Bayes's Law.  Our motivation is that we have a coin of unknown bias.  We toss it a certain number of times and get a certain number of heads.  What is the best guess of the bias of the coin?  Bayes's Law will enable us to calculate this.  Bayes's Law says,
+\begin{eqnarray*}
+P(B|A)=\frac{P(A|B)P(B)}{P(A)}
+\end{eqnarray*}
+
+We want to apply this to a Bernoulli Process, in which the bias is given by the random variable $P$ with a density, $dens(P=t)=f(t)$.  Let $S_n$ be the number of heads in the first $n$ tosses.  By the continuous law of alternatives,
+\begin{eqnarray*}
+P(S_n=k)=\int_{0}^{1}P(S_N=k|P=t)dens(P=t)dt \\
+P(S_n=k)=\int_0^1 {n\choose k}t^k(1-t)^{n-k}dens(P=t)dt
+\end{eqnarray*}
+
+Now we apply Bayes's Law, which asks for the density, $dens(P=t|S_n=k)$.  We want the bias $P$ given that we have $S_n=k$ heads in $n$ tosses.  First, we should calculate $P(t<P\leq t+\Delta t|S_n=k)$.  These are probabilities that we can calculate using Bayes's Law.  
+\begin{eqnarray*}
+P(t<P\leq t+\Delta t|S_n=k)=\frac{P(S_n|t<P\leq t+\Delta t)P(t<P\leq t+\Delta t)}{P(S_n=k)}
+\end{eqnarray*}
+
+Now we divide by $\Delta t$ and let the rest of the $\Delta t$ go to zero.
+\begin{eqnarray*}
+\lim_{\Delta t\to 0}\frac{P(t<P\leq t+\Delta t|S_n=k)}{\Delta t}&=&\lim_{\Delta t\to 0}\frac{P(S_n=k|t<P\leq t+\Delta t) \frac{P(t<P\leq t+\Delta t)}{\Delta t}}{P(S_n=k)} \\
+dens(P=t|S-n=k)&=&\frac{P(S_n=k|P=t)dens(P=t)}{\displaystyle\int_0^1\!\!P(S_n=k|P=t)dens(P=t)dt}
+\end{eqnarray*}
+
+This is the continuous analog of Bayes's Law.  In the Bernoulli case,
+\begin{eqnarray*}
+dens(P=t|S_n=k)=\frac{{n\choose k}t^n(1-t)^{n-k}dens(P=t)}{\displaystyle\int_0^1\!\! {n\choose k}t^k(1-t)^{n-k}dens(P=t)dt}
+\end{eqnarray*}
+
+The denominator is the integral of the numerator between 0 and 1.  It acts as a normalizing factor.  We can say instead,
+$\underbrace{dens(P=t|S_n=k)}_{\mbox{posterior}}\propto\underbrace{t^k(1-t)}_{\mbox{likelihood}}^{n-k}\underbrace{dens(P=t)}_{\mbox{prior}}$
+
+In order to estimate the density, the posterior, given the number of heads, we need to know how many heads came out of $n$ tosses, the prior.  We also need a previous guess as to the likelihood.  Without a previous guess, we take a uniform distribution, hence a uniform prior.
+
+\noindent\underline{case 1}:\\
+Ignorance, take a uniform prior.  Let $dens(P=t)=1$, for $(0<t\leq 1)$.  Then, the posterior, $dens(P=t|S_n=k)\propto t^k(1-t)^{n-k}$.  The proportionality factor is the $\beta$ function which we get by integrating.
+
+\noindent\underline{example 1}:  Given $n$ tosses, and $k=0$, the posterior $dens(P=t|S_n=0)\propto (1-t)^n$.  What does this tell us?  It tells us that the distribution is very close to zero.  The more we toss the coin and get no heads, the more the probability distribution will be concentrated near zero.
+
+\noindent\underline{example 2}:  Suppose we toss the coin twice and get one head, $n=2$, $k=1$.  The density is given by, $dens(P=t|S_2=1)\propto t(1-t)$.  What does this tell us?  Graphing this probability distribution, we find that the distribution is evenly distributed around 1/2, therefore, heads are just as likely as tails.
+
+\noindent\underline{example 3}:  Given an even number of tosses, exactly half of which are heads, what does this probability distribution look like?  $\frac{n}{2}=k$, $dens(P=t|S_n=\frac{n}{2})\propto t^{n/2}(1-t)^{n/2}$.  Graphing this distribution, we find that for bigger $n$, we have a steeper curve around $\frac{1}{2}$.  If we toss the coin large $n$ amount of times, and consistently get 1/2 heads, our graph will display a probability distribution of exactly 1/2.
+
+Unfortunately, distributions only go so far.  Eventually, we need to get numbers.  So, statistics invented confidence integrals.  Confidence integrals involve graphing a probability distribution and taking some integral with 95 percent of the area.  We can then say with 95 percent confidence that the result lies between points $a$ and $b$.  A good interval is 95 percent of the area.  A very good interval is 99 percent.  
+
+

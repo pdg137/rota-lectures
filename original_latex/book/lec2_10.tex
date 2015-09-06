@@ -1,0 +1,106 @@
+{\Large 18.313 Lecture 4, Wednesday, February 10, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\newline
+Transcribed by David Wang and Shivkumar Venkatasubrahmanyam\newline
+
+\noindent {\bf More examples of sample spaces...}
+\vspace{1ex}
+
+\noindent {\bf Example 4 :} Maxwell-Boltzmann Statistics
+
+The Maxwell-Boltzmann statistics (or the Maxwell-Boltzmann sample space) occurs frequently in the study of natural phenomena. It concerns the placement of balls into boxes and the number of possible placements. 
+
+Given a set of $k$ indistinguishable balls ($B$) and a set of $n$ boxes, numbered $1,2,...,n$, ($U$),  we define
+\begin{itemize}
+\item a sample point $\omega$ to be a function from the set $B$ to the set $U$
+\item the sample space $\Omega$ to be the set of all functions from the set $B$ to the set $U$
+\item the family of events ${\cal E}$ to be all subsets of $\Omega$
+\end{itemize}
+\noindent In addition, the occupation number $\theta_{i}(\omega)$ is the number of balls in the $i^{th}$ box for the sample point $\omega$. The sample space $\Omega$ is finite and consists of $n^{k}$ sample points. In the absence of further information, we assign an equal probability to each event. Let A be any event. Then we have
+\begin{eqnarray*}
+P(\omega) & = & \frac{1}{n^{k}}\\
+P(A) & = & \sum_{\omega \epsilon A} P(\omega)\\
+P(\theta_{i}=0) & = & \frac{(n-1)^{k}}{n^{k}}
+\end{eqnarray*}
+
+\noindent Problem 1 : What is the probability that all the boxes are occupied?
+
+Let $A$ be the event that all boxes are occupied. Let $A_{i}$ the event that the $i^{th}$ box is occupied and $B_{i}$ the event that $i^{th}$ box is empty. Then we have
+\begin{eqnarray*}
+A & = & A_{1} \cap A_{2} \cap ... \cap A_{n}\\
+P(A) & = & 1-P(A^{c})\\
+A^{c} & = & A_{1}^{c} \cup  A_{2}^{c} \cup ... \cup A_{n}^{c}\\
+& = & B_{1} \cup B_{2} \cup ... \cup B_{n}
+\end{eqnarray*}
+\noindent Using the inclusion exclusion principle, we have
+\[
+P(A^{c}) = \sum_{i=1}^{n}P(B_{i}) - \sum_{1 \leq i < j \leq n}P(B_{i} \cap B_{j}) + \sum_{1 \leq i < j < k \leq n}P(B_{i} \cap B_{j} \cap B_{k}) - ...
+\]
+Now 
+\begin{eqnarray*}
+P(B_{i}) & = & \frac{(n-1)^{k}}{n^{k}}\\
+P(B_{i} \cap B_{j}) & = & \frac{(n-2)^{k}}{n^{k}}\\
+P(B_{i} \cap B_{j} \cap B_{k}) & = & \frac{(n-3)^{k}}{n^{k}}
+\end{eqnarray*}
+Therefore 
+\begin{eqnarray*}
+P(A^{c}) & = & n \cdot \frac{(n-1)^{k}}{n^{k}} - {{n}\choose{2}} \cdot \frac{(n-2)^{k}}{n^{k}} + {{n}\choose{3}} \cdot \frac{(n-3)^{k}}{n^{k}} - ...\\
+& = & n \cdot \frac{(n-1)^{k}}{n^{k}} - \frac{n(n-1)}{1 \cdot 2}\frac{(n-2)^{k}}{n^{k}} + \frac{n(n-1)(n-2)}{1 \cdot 2 \cdot 3}\frac{(n-3)^{k}}{n^{k}} - ...
+\end{eqnarray*}
+
+\noindent Problem 2 : What is the probability that there is no more than one ball in any box? This problem can be phrased differently. What is the probability that given $k$ persons no two share the same birthday?
+
+Let C be the event that all $\theta_{i} \leq 1$. The number of ways of placing $k$ balls into $n$ boxes in such a way that no box has more than one ball $= n(n-1)(n-2) \cdots (n-k+1) = \frac{n!}{(n-k)!}$. The number $\frac{n!}{(n-k)!}$ is called a falling factorial and denoted $(n)_{k}$. Therefore $P(C) = \frac{(n)_{k}}{n^{k}}$.
+ 
+\vspace{12pt}
+\noindent Aside : The falling factorial $(n)_{k}$ is related to the binomial coeffient by the relation \[{{n}\choose{k}} = \frac{(n)_{k}}{k!}\]
+ The falling factorial obeys the binomial theorem.
+\[ (n+m)_{k} = \sum_{i=0}^{k}{{k}\choose{i}}(n)_{i}(m)_{k-i} \]
+
+There are dual interpretations of the Maxwell-Boltzmann sample space. The first is the distribution interpretation of placing balls into boxes. The second is the occupancy interpretation. Here $B$ is the set of places $1,2,...,k$ and $U$ is the set of letters a,b,...,c. Functions from the set of places $B$ to the set of letters $U$  are called words. For example, a sample point in this sample space $\Omega$ is $\omega = $ aabcbaccaba... In this interpretation, we may pose questions involving runs of letters that cannot be posed under the distribution interpretation.
+
+\noindent {\bf Example 5} : Sampling (With Replacement)\\
+This is a favorite job of statisticians, who sample... populations.
+
+$U$ = Population, which has $c_1$ elements marked 1, $c_2$ elements marked 2, ... $c_n$ elements marked $n$.\\
+$\Omega$ = \{$\omega$ = ($\omega_{1}$, $\omega_{2}$, ...) \} (infinitely many $\omega$'s)\\
+$\omega_{i}$ = one of 1, 2, ... n\\
+$A_1$ = event that $i^{th}$ entry equals i\\
+$P(A_i) = \frac {c_i}{c_1 + c_2 + ... + c_n}$
+
+We will see MUCH more of this later.  But on to Sampling Without Replacement.
+
+\noindent {\bf Example 6} : Sampling (Without Replacement)\\
+$\Omega$ = \{$\omega$ = ($\omega_{1}$, $\omega_{2}$, ... $\omega_{c_1 + c_2 + ... + c_n}$)\}\\
+$\omega_{i}$ = one of 1, 2, ... n\\
+A = every subset is an event
+
+P(($\omega_1$ = i)) = $\frac {c_i}{c_1 + c_2 + ... + c_n}$\\
+P(($\omega_2$ = j)) = NOT SO EASY!!!\\
+P(($\omega_1$ = i) $\cap$ ($\omega_2$ = j)) = $\frac {c_i}{c_1 + c_2 + ... + c_n} \cdot \frac {c_j}{c_1 + c_2 + ... + c_n - 1}$\\
+P(($\omega_1$ = i) $\cap$ ($\omega_2$ = i)) = $\frac {c_i(c_i - 1)}{(c_1 + c_2 + ... + c_n)(c_1 + c_2 + ... + c_n - 1)}$
+
+An interesting result$:$\\
+P($\omega$) = $\frac {c_1!c_2!...c_n!}{(c_1 + c_2 + ... + c_n)!}$ (!)
+
+But in many of our previous examples, we have already used Random Variables implicitly.  It's just that you never knew about it.  However, to further your understanding of Probability it is necessary to introduce Random Variables now, and I will do so.
+
+Random Variables (Integer valued)\\
+One can see random variables as a strengthening of normal algebraic variables because the variable can be any value, with a certain probability.  Normal variables are only 1 for a single integer value and 0 for everything else, which is a special case of the more general random variable.
+
+Given a sample space $\Omega$ :
+
+A random variable $X$ is a  function from $\Omega$ to the integers with the property that for every integer $n$, \{$\omega:X(\omega) = n$\} is an event, written ($X = n$).
+
+If $X$ is an (Integer) random variable, the events $(X = i)$ and $(X = j)$ are disjoint if $i \neq j$, and $\cup_{n} (X = n) = \Omega$\\
+i.e. the events ($X = n$), as $X$ ranges over the integers, are a partition of the sample space $\Omega$ into blocks.
+
+If $X$ is a random variable, the sequence of probabilities $p_n = P(X = n$) is called the probability distribution of $X$.
+
+Recall:\\
+Events $A$ and $B$ are independent when $P(A \cap B) = P(A)P(B)$\\
+Suppose $X$, $Y$ = random variables.  We say $X$ and $Y$ are independent when \\
+$P((X = i) \cap (Y = j)) = P(X = i)P(Y = j)$ for all integers $i$ and $j$.
+
+
+
+

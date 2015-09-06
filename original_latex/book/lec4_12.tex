@@ -1,0 +1,53 @@
+{\Large 18.313, Lecture 23, Wednesday, April 12, 1999}\newline
+{\large Lecture by Prof. G.-C. Rota}\\
+Transcribed by Carla M. Pellicano (carpem@mit.edu)\\
+
+\noindent {\bf Bayes's Law} (continued):\\
+
+\noindent The continuous analog of Bayes's Law gives us the following,
+$$\int_0^1(1-t)^{b-1}dt=\frac{(a-1)!(b-1)!}{(a+b-1)!}=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$$
+The conditional density of the bias of a coin is given by,
+$$dens(P+t|S_n=k)=\frac{P(S_n=k|P=t)dens(P=t)}{\int_0^1P(S_n=k|P=t)dens(P=t)dt}$$
+The denominator is relatively insignificant since we know that it must integrate to $1$.  We can write instead, 
+$$dens(P=t|S_n)\propto t^k(1-t)^{n-k}dens(P=t)$$
+If we know nothing about bias, we assume that all possible priors are equally probable.\\\\
+\noindent{\bf Case 1}: Uniform Prior\\\\
+We assume a uniform prior, $dens(P=t)=1$, for $0<t\leq 1$.  Plugging into our expression from above,
+$$dens(P=t|S_n=k)\propto t^k(1-t)^{n-k}$$
+if $n$ is even and $k=n/2$.  We can take a confidence integral, in this case with $95\%$ of the area under the curve, using two boundary points.  However, reporting that our answer is between two points with $95\%$ confidence, so to speak, may be unacceptable.  So, we take the expected value.  
+$$X(P|S_n=k)=\int_0^1 tdens(P=t|S_n=k)dt$$
+This is called the Bayes's estimator.
+$$dens(P=t|S_n=k)=\frac{t^k(1-t)^{n-k}}{\frac{k!(n-k)!}{(n+1)!}}$$
+$$\int_0^1 t\,dens(P=t|S_n=k)dt=\int_0^1 \frac{t^{k+1}(1-t)^{n-k}dt}{\frac{k!(n-k)!}{(n+1)!}}=\frac{\frac{(k+1)!(n-k)!}{(n+2)!}}{\frac{k!(n-k)!}{(n+1)!}}$$
+Simplifying this expression, we find that the Bayes's Estimator is
+$$\frac{k+1}{n+2}$$
+This is the best guess for the probability/bias for $k$ heads out of $n$ tosses.  \\\\
+\noindent{\bf Case 2}: Conjugate Prior\\\\
+We can go back and do this same calculation with a conjugate prior, $t^i(1-t)^{j-i}$.  The corresponding posterior is given by,
+$$dens(P=t|S_n=k)\propto t^k(1-t)^{n-k}t^i(1-t)^{j-i}=t^{k+i}(1-t)^{n-k+j-1}$$
+We can get a better Bayes's Estimator from a conjugate prior, since we use actual information.  The Bayes's Estimator from a conjugate prior is
+$$\frac{k+i+1}{n+j+2}$$
+\\\\\noindent{\bf The Algebra of Probability Distributions}\\\\
+Let $X$ be a random variable with a density, $dens(X=t)=f(t)$.  To simplify our discussion, $X$ is non negative.  What can we say about the the probability distribution of the random variable $X^2$?  It is not the square of $f(t)$.  \\\\
+\noindent The event $(X\leq t)$ is the same as $(X\leq\sqrt t)$.  So, the probability distributions must be equal as well.  
+$$P(X^2\leq t)=P(X\leq \sqrt t)$$  And, since the density of $X^2$ must equal the derivative of the probability distribution of $X^2$, we can now find the probability distribution for $X^2$.
+$$\frac{d}{dt}F(\sqrt t)=\underbrace{F'(\sqrt t)}_{density}\frac{1}{2\sqrt t}=f(\sqrt t)\frac{1}{2\sqrt t}=\underbrace{\frac{dens(X=\sqrt t)}{2\sqrt t}}_{dens(X^2=t)}$$
+$$\int_0^1 dens(X^2=t)dt=\int_0^1 \frac{dens(X=\sqrt t)}{2 \sqrt t}dt$$
+To check our answer, set $u=t$.
+$$\int_0^1 dens(X=u)du=1\;\;\;\;\mbox{ it's checks.}$$
+More generally, we'd like to calculate the density of $g(X)$, where $g$ is some function.  Supoose that $g$ is an increasing function, such that
+$$(g(X)\leq t)=(X\leq g^{-1}(t))$$
+then,
+$$P(g(X)\leq t)=P(X\leq g^{-1}(t)).$$
+Now we take the derivative
+$$dens(g(X)=t)=\frac{d}{dt}P(X\leq g^{-1}(X))$$
+$$dens(g(X)=t)=\frac{d}{dt}F(g^{-1}(t))$$
+By the definition of inverse functions $(g(X)=t)$.  Taking the derivative of both sides, we get 
+$$g\prime(g^{-1}(t))g^{-1}\prime(t)=1$$
+$$g^{-1}\prime(t)=\frac{1}{g\prime(g^{-1}(t))}$$
+and the density is given by
+$$dens(g(X)=t)=F\prime(g^{-1}(t))g^{-1}\prime(t)=dens(X=g^{-1}(t))\frac{1}{g\prime(g^{-1}(t)}$$
+let's see that this integrates to one.
+$$\int_0^{\infty} (g(X)=t)dt=\int_0^{\infty}\frac{dens(X=g\prime(t))}{g\prime(g^{-1}(t))}dt$$
+Set $u=g^{-1}(t)$ and $du=\frac{dt}{g\prime(g^{-1}(t))}$.  Then, the integral becomes
+$$\int_0^{\infty}dens(X=u)du=1.$$
