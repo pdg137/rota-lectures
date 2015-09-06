@@ -21,7 +21,7 @@ $$P(G_n=x) = {1\over 2^n} \left( n \atop {n+x \over 2} \right).$$
 We now make up a new random variable, $Z_a$, as follows.  The event
 that $Z_a=n$ is defined to be
 $(G_1<a)\cap(G_2<a)\cap\cdots\cap(G_{n-1}<a)\cap(G_n=a).$  This is
-the time it takes, or ``the waiting time,'' to reach level $a$.
+the time it takes, or "the waiting time," to reach level $a$.
 
 Also, we define $M_n$ to be the maximum of $G_0,G_1,\ldots,G_n$, the
 maximum level reached in the first $n$ steps.  We want their
