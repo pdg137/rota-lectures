@@ -58,7 +58,7 @@ This is a good way to simplify some problems --- don't forget it!
 
 Using the reflection principle we can compute the distribution of $Z_a$:
 
-$$P(Z_a=n)=P(Z_a=n \,\vert\, Y_n=1)P(Y_n=1)+P(Z_a=n \,\vert\, Y_n=-1)P(Y_n=-1).$$
+$$P(Z_a=n)=P(Z_a=n \,\vert\, Y_n=1) \cdot P(Y_n=1)+P(Z_a=n \,\vert\, Y_n=-1) \cdot P(Y_n=-1).$$
 
 Since last step must be up for the path to reach a new maximum,
 
