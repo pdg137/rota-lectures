@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: The Random Walk
+title: The random walk
 lecture: 12
 date: Friday, March 5, 1999
 transcriber: Paul Grayson
