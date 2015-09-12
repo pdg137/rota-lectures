@@ -1,6 +1,9 @@
 ---
 layout: lecture
 title: The Random Walk
+lecture: 12
+date: Friday, March 5, 1999
+transcriber: Paul Grayson
 ---
 
 Today we will review the random walk.  Since this is one of the most
