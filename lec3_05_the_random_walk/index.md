@@ -16,7 +16,7 @@ We draw a sample point of the random walk by graphing $G_n$ with
 respect to time, and connecting the dots.  The simplest thing to
 compute is the probability distribution of $G_n$,
 
-$$P(G_n=x) = {1\over 2^n} \left( n \atop {n+x \over 2} \right).$$
+$$P(G_n=x) = {1\over 2^n} \left( n \atop {(n+x) / 2} \right).$$
 
 We now make up a new random variable, $Z_a$, as follows.  The event
 that $Z_a=n$ is defined to be
@@ -58,17 +58,17 @@ This is a good way to simplify some problems --- don't forget it!
 
 Using the reflection principle we can compute the distribution of $Z_a$:
 
-$$P(Z_a=n)=P(Z_a=n \vert Y_n=1)P(Y_n=1)+P(Z_a=n \vert Y_n=-1)P(Y_n=-1).$$
+$$P(Z_a=n)=P(Z_a=n \,\vert\, Y_n=1)P(Y_n=1)+P(Z_a=n \,\vert\, Y_n=-1)P(Y_n=-1).$$
 
 Since last step must be up for the path to reach a new maximum,
 
-$$P(Z_a=n \vert Y_n=-1)=0$$
+$$P(Z_a=n \,\vert\, Y_n=-1)=0$$
 
 and we have:
 
 $$
 \begin{eqnarray*}
-P(Z_a=n)&=&{1\over2}P(Z_a=n \vert Y_n=1) \\
+P(Z_a=n)&=&{1\over2}P(Z_a=n \,\vert\, Y_n=1) \\
         &=&{1\over2}\left\{ P(G_{n-1}=a-1) - P((G_{n-1}=a-1)\cap(Z_a \le n-1))\right\}
 \end{eqnarray*}
 $$
@@ -84,9 +84,9 @@ $$
 We finally have
 
 $$P(Z_a=n)
-	 = {1\over2^n}\left[ \left( n-1 \atop {n+a\over2}-1 \right)
-			   + \left( n-1 \atop {n+a\over2} \right) \right]
-	 = {a \over 2^n\cdot n} \left( n \atop {n+a\over 2} \right).$$
+	 = {1\over2^n}\left[ \left( n-1 \atop {(n+a)/2}-1 \right)
+			   + \left( n-1 \atop {(n+a)/2} \right) \right]
+	 = {a \over 2^n\cdot n} \left( n \atop {(n+a)/2} \right).$$
 
 Next, let's roll up our sleeves and compute the probability
 distribution of the maximum $M_n$.
