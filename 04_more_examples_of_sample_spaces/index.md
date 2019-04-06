@@ -74,5 +74,5 @@ $(n)\_k$.  Therefore $P(C) = \frac{(n)_{k}}{n^{k}}$.
 
 **Aside:** The falling factorial $(n)\_k$ is related to the binomial
 coeffient by the relation ${n\choose k} = \frac{(n)\_{k}}{k!}$.
-The falling factorial obeys the binomial theorem.  $(n+m)\_{k} =
-\sum\_{i=0}^{k}{k\choose i}(n)\_{i}(m)_{k-i}$
+The falling factorial obeys the binomial theorem:  $(n+m)\_{k} =
+\sum\_{i=0}^{k}{k\choose i}(n)\_{i}(m)_{k-i}$.
