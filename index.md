@@ -7,4 +7,6 @@ title: Rota 18.313 Lectures
 * [Sample spaces](02_sample_spaces)
 * [Sample spaces, continued](03_sample_spaces_continued)
 * [More examples of sample spaces](04_more_examples_of_sample_spaces)
+* [Random variables](05_random_variables)
+* [Random variables (continued)](06_random_variables_continued)
 * [The random walk](12_the_random_walk)
