@@ -13,4 +13,5 @@ title: Rota 18.313 Lectures
 * [The random walk](08_the_random_walk)
 * [The random walk (continued)](09_the_random_walk_continued)
 * [Conditional probability (continued)](10_conditional_probability_continued)
+* [Conditional probability (continued)](11_conditional_probability_continued)
 * [The random walk](12_the_random_walk)
