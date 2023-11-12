@@ -1,8 +1,8 @@
 ---
 layout: lecture
 title: Random variables (continued)
-lecture: 5
-date: Friday, February 16, 1999
+lecture: 6
+date: Tuesday, February 16, 1999
 transcriber: Bilge Demirköz
 ---
 
@@ -185,10 +185,10 @@ X_{n}= \text{outcome of the $n^{th}$ toss} = \left\{
 \end{array} \right\}
 $$
 
-The random variables $X_1$, $X_2$, $X_3$,\ldots are independent and
-are identically distributed. Now it is too easy. Let's toughen it up a
-little bit. Let $S_n$ be the number of heads in the first $n$ tosses
-then we have,
+The random variables $X_1$, $X_2$, $X_3$, ... are independent and
+identically distributed. Now it is too easy. Let's toughen it up a
+little bit. Let $S_n$ be the number of heads in the first $n$
+tosses. Then, we have,
 
 $$
 \begin{eqnarray}
