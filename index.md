@@ -1,6 +1,6 @@
 ---
 layout: front_page
-title: Rota 18.313 Lectures
+title: Gian-Carlo Rota 18.313 Lectures, Spring 1999
 ---
 
 * [Famous and unsolved problems](01_famous_and_unsolved_problems)
@@ -16,3 +16,5 @@ title: Rota 18.313 Lectures
 * [Conditional probability (continued)](10_conditional_probability_continued)
 * [Conditional probability (continued)](11_conditional_probability_continued)
 * [The random walk revisited](12_the_random_walk_revisited)
+* [Bayes's Law](13_bayess_law)
+
