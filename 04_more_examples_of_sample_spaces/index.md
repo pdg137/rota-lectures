@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: More examples of sample spaces...
-date: February 10, 1999
+date: Wednesday, February 10, 1999
 transcriber: David Wang and Shivkumar Venkatasubrahmanyam
 ---
 

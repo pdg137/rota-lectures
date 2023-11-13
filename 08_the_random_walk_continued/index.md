@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: The random walk
-lecture: 9
+lecture: 8
 date: Monday, February 22, 1999
 transcriber: Yvonne Lai and David Wang
 ---

@@ -2,7 +2,7 @@
 layout: lecture
 title: Sample spaces
 lecture: 2
-date: February 5, 1999
+date: Friday, February 5, 1999
 transcriber: Bilge Demirköz
 ---
 

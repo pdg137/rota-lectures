@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: Sample spaces, continued
-date: February 8, 1999
+date: Monday, February 8, 1999
 transcriber: Yvonne Lai and David Wang
 ---
 

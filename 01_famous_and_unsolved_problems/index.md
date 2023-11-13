@@ -2,7 +2,7 @@
 layout: lecture
 title: Famous and unsolved problems
 lecture: 1
-date: February 3, 1999
+date: Wednesday, February 3, 1999
 transcriber: Wei-An Yu
 ---
 
