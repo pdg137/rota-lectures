@@ -17,4 +17,5 @@ title: Gian-Carlo Rota 18.313 Lectures, Spring 1999
 * [Conditional probability (continued)](11_conditional_probability_continued)
 * [The random walk revisited](12_the_random_walk_revisited)
 * [Bayes's Law](13_bayess_law)
+* [Bayes's Law (continued)](14_bayess_law_continued)
 
