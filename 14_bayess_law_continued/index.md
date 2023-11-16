@@ -26,10 +26,12 @@ $$
 
 The first term of the summation is called the *likelihood*. The second term is called the *prior*. The prior requires an arbitrary assignment. Guess work is necessary here. This guess is what is called the prior. Having chosen a prior we have a sample space, hence
 
+$$
 \begin{align*}
 P(U=j \mid A=i) &= \frac {P(U=j) \cap P(A=i)}  {P(A=i)}\\
                &= \frac {P(A=i \mid U=j) P(U = j)} {P(A=i)}
 \end{align*}
+$$
 
 The denominator is the *normalization coefficient*. And we have defined this earlier so we substitute in and get,  
 $\frac {P(A=i \mid U=j) P(U=j)} {\sum_{j=0}^{n} P(A=i \mid U=j)P(U=j)}$
