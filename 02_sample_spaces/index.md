@@ -11,8 +11,8 @@ points, together with a family $\varepsilon$ of subsets, called events:
 
 1. $\phi \in \varepsilon$
 2. If $A \in \varepsilon$ then $A^c = \Omega - A \in \varepsilon$
-3. If $A \in \varepsilon$ then $A \cap B \in \varepsilon$
-4. If $A_1 A_2 \ldots \in \varepsilon$ disjoint, then $A_1 \cup A_2
+3. If $A, B \in \varepsilon$ then $A \cap B \in \varepsilon$
+4. If $A_1, A_2, \ldots \in \varepsilon$ disjoint, then $A_1 \cup A_2
 \cup \ldots \in \varepsilon$. This results in countable additivity.
 
 Given a sample space $\Omega$ with events $\varepsilon$, a probability
