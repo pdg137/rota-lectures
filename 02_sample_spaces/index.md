@@ -47,10 +47,11 @@ w &=& (1, 0, 0, 1, 0, 1, 1, 0, \ldots)\\
 \mbox{events: } H_n &=& \mbox{event that the } n^{th} \mbox{ toss is
 1.}\\
 H_n^c &=&\mbox{event that the } n^{th} \mbox{ toss is 0.}\\
-\mbox{plus}&\mbox{any}& \mbox{ event obtained from } H_1, H_2, \ldots \mbox{ by the
-rules } (1)(2)(3)(4) \mbox{ defining } \varepsilon.
 \end{eqnarray*}
 $$
+
+...plus any event obtained from $H_1, H_2, \ldots$ by the
+rules 1, 2, 3, 4 defining $\varepsilon$.
 
 Given a bias $p$ and letting $q=1-p$:
 
